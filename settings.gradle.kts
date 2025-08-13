@@ -21,3 +21,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "SchoolManagementApp"
 include(":app")
+onIncludedModule(dir = "features", modules = listOf("auth"))
+
+private fun onIncludedModule(dir: String, modules: List<String>)
+{
+    val main = ":$dir"
+    modules.forEach { module -> include("$main:$module") }
+}
