@@ -7,28 +7,28 @@ plugins {
 }
 
 android {
-    this.namespace = "com.domain.visor.school.kh"
-    this.compileSdk = 36
+    namespace = "com.domain.visor.school.kh"
+    compileSdk = 36
     
     defaultConfig {
-        this.applicationId = "com.domain.visor.school.kh"
-        this.minSdk = 24
-        this.targetSdk = 36
-        this.versionCode = 1
-        this.versionName = "1.0"
+        applicationId = "com.domain.visor.school.kh"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
         
-        this.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     
     buildTypes {
         release {
-            this.isMinifyEnabled = false
-            this.proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
-        this.sourceCompatibility = JavaVersion.VERSION_11
-        this.targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions.jvmTarget = JvmTarget.JVM_11.target
     buildFeatures.compose = true
