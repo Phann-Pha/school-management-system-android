@@ -1,3 +1,17 @@
+rootProject.name = "SchoolManagementApp"
+
+// --- Helper function for module inclusion ---
+private fun onIncludedModule(dir: String, modules: List<String>)
+{
+    val main = ":$dir"
+    modules.forEach { module -> include("$main:$module") }
+}
+
+// --- Module Includes ---
+include(":app")
+onIncludedModule(dir = "core", modules = listOf("base"))
+
+// --- Plugin and Dependency Management ---
 pluginManagement {
     repositories {
         google {
@@ -11,21 +25,11 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
-}
-
-rootProject.name = "SchoolManagementApp"
-include(":app")
-
-onIncludedModule(dir = "core", modules = listOf("base"))
-
-private fun onIncludedModule(dir: String, modules: List<String>)
-{
-    val main = ":$dir"
-    modules.forEach { module -> include("$main:$module") }
 }
