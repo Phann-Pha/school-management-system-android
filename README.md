@@ -107,7 +107,6 @@ SchoolManagementApp/
 ## License
 
 @2025 Copyright Visor Team.
-MIT License or custom license info here.
 
 ---
 
