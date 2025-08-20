@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "SchoolManagementApp"
 include(":app")
-onIncludedModule(dir = "features", modules = listOf("auth"))
+
 onIncludedModule(dir = "core", modules = listOf("base"))
 
 private fun onIncludedModule(dir: String, modules: List<String>)
