@@ -58,7 +58,7 @@ SchoolManagementApp/
 
 1. **Clone the repository**
    ```sh
-   git clone <your_repo_url>
+   git clone <https://github.com/Phann-Pha/SchoolManagementSystem.git>
    ```
 2. **Open in Android Studio**
     - Choose "Open" and select the root folder.
