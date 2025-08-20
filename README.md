@@ -6,17 +6,17 @@ A modern Android app for managing school-related tasks, built with Kotlin and Je
 
 Explore and interact with the official school management app design prototype:
 
-[![Figma Prototype Preview](https://assets.website-files.com/606f67cfd0466bc215bb60d7/6531b38f15546b9c056b1656_figma-logo.svg)](https://www.figma.com/proto/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&t=fk6gRtBF2kQdwWnK-1)
+[![Figma Prototype Preview](https://www.figma.com/design/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&m=dev&t=EJvMr5EOwgZO1HFn-1)
 
-[Open in Figma → (Prototype)](https://www.figma.com/proto/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&t=fk6gRtBF2kQdwWnK-1)
+[Open in Figma → (Prototype)](https://www.figma.com/design/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&m=dev&t=EJvMr5EOwgZO1HFn-1)
 
 ### Full App Design File
 
 See the complete design workspace, all screens, components, and dev resources:
 
-[![Figma Design Preview](https://assets.website-files.com/606f67cfd0466bc215bb60d7/6531b38f15546b9c056b1656_figma-logo.svg)](https://www.figma.com/design/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&m=dev&t=fk6gRtBF2kQdwWnK-1)
+[![Figma Design Preview](https://www.figma.com/design/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&m=dev&t=EJvMr5EOwgZO1HFn-1)
 
-[Open in Figma → (Design)](https://www.figma.com/design/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&m=dev&t=fk6gRtBF2kQdwWnK-1)
+[Open in Figma → (Design)](https://www.figma.com/design/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&m=dev&t=EJvMr5EOwgZO1HFn-1)
 
 ---
 
