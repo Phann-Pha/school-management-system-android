@@ -1,17 +1,17 @@
 rootProject.name = "SchoolManagementApp"
 
-// --- Helper function for module inclusion ---
+// Helper function for module inclusion
 private fun onIncludedModule(dir: String, modules: List<String>)
 {
     val main = ":$dir"
     modules.forEach { module -> include("$main:$module") }
 }
 
-// --- Module Includes ---
+// Module Includes
 include(":app")
-onIncludedModule(dir = "core", modules = listOf("base"))
+onIncludedModule(dir = "core", modules = listOf("base", "network", "database", "components", "resources"))
 
-// --- Plugin and Dependency Management ---
+// Plugin Management
 pluginManagement {
     repositories {
         google {
@@ -26,6 +26,7 @@ pluginManagement {
     }
 }
 
+//  Dependency Management
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
