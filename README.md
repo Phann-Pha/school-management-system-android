@@ -2,11 +2,20 @@
 
 A modern Android app for managing school-related tasks, built with Kotlin and Jetpack Compose. Designed for modularity, scalability, and maintainability in educational environments. Developed by Visor Team (2025).
 
+## Figma Prototype
+
+Explore and interact with the official school management app design prototype:
+
+[![Figma Prototype Preview](https://assets.website-files.com/606f67cfd0466bc215bb60d7/6531b38f15546b9c056b1656_figma-logo.svg)](https://www.figma.com/proto/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&t=fk6gRtBF2kQdwWnK-1)
+
+[Open in Figma →](https://www.figma.com/proto/teD0zvKucDuHC4VZCh3ZiA/School-Management-System?node-id=0-1&t=fk6gRtBF2kQdwWnK-1)
+
 ---
 
 ## Table of Contents
 
 - [Features](#features)
+- [Figma Prototype](#figma-prototype)
 - [Project Structure](#project-structure)
 - [Build & Run Instructions](#build--run-instructions)
 - [Testing](#testing)
