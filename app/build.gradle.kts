@@ -29,6 +29,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures.compose = true
+    kotlinOptions.jvmTarget = "11"
 }
 
 dependencies {
