@@ -30,13 +30,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-<<<<<<< HEAD
     kotlinOptions {
         jvmTarget = JvmTarget.JVM_11.target
     }
-=======
-    kotlinOptions.jvmTarget = "11"
->>>>>>> master
 }
 
 dependencies {
