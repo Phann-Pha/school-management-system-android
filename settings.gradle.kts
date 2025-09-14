@@ -21,11 +21,15 @@ dependencyResolutionManagement {
     }
 }
 
-private fun onIncludedModule(dir: String, modules: List<String>)
-{
-    val main = ":$dir"
-    modules.forEach { module -> include("$main:$module") }
-}
+private fun module(dir: String, modules: List<String>) =
+    modules.forEach { module -> include("$dir:$module") }
 
 include(":app")
-onIncludedModule(dir = "core", modules = listOf("base"))
+module(
+    dir = "core",
+    modules = listOf(
+        "base",
+        "network-client:ktor-client",
+        "network-client:retrofit-client"
+    )
+)

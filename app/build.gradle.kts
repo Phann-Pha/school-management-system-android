@@ -37,7 +37,7 @@ android {
         compose = true
     }
     kotlinOptions {
-        jvmTarget = JvmTarget.JVM_11.target
+        jvmTarget = JvmTarget.JVM_17.target
     }
     buildToolsVersion = "35.0.0"
 }
