@@ -1,5 +1,6 @@
 *.iml
 .gradle
+.idea
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -20,5 +21,4 @@
 /.idea/AndroidProjectSystem.xml
 /.idea/runConfigurations.xml
 /.idea/vcs.xml
-/.idea/ChatHistory_schema_v2.xml
 /.idea/ChatHistory_schema_v2.xml

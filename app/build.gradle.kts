@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -7,44 +9,52 @@ plugins {
 android {
     namespace = "com.domain.visor.school.kh"
     compileSdk = 36
-    
+
     defaultConfig {
         applicationId = "com.domain.visor.school.kh"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
-        
+        versionName = "1.0.0"
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    
+
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    buildFeatures.compose = true
-    kotlinOptions.jvmTarget = "11"
+    buildFeatures {
+        compose = true
+    }
+    kotlinOptions {
+        jvmTarget = JvmTarget.JVM_11.target
+    }
+    buildToolsVersion = "35.0.0"
 }
 
 dependencies {
-    
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
-    
+
     // ui tools
     implementation(libs.bundles.androidx.compose.ui.tools)
-    
+
     // material ui 3
     implementation(libs.androidx.material3)
-    
+
     // testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
