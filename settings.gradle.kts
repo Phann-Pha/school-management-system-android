@@ -28,7 +28,6 @@ include(":app")
 module(
     dir = "core",
     modules = listOf(
-        "base",
         "network-client:ktor-client",
         "network-client:retrofit-client"
     )
