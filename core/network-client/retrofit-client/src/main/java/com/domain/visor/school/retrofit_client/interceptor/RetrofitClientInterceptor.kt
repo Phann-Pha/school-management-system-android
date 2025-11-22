@@ -13,7 +13,7 @@ class RetrofitClientInterceptor(private val authKey: String = "", private val au
     override fun intercept(chain: Interceptor.Chain): Response
     {
         var request = chain.request()
-        val invocation = chain.request().tag(Invocation::class.java) ?: return chain.proceed(chain.request())
+        val invocation = chain.request().tag(type = Invocation::class.java) ?: return chain.proceed(request = chain.request())
         containedOnInvocation(invocation).forEach { annotation ->
             request = onHandleAnnotation(annotation = annotation, request = request, key = authKey, value = authValue)
         }
