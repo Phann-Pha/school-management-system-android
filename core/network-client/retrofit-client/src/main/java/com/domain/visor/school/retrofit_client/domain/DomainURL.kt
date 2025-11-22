@@ -12,6 +12,6 @@ class DomainURL
     @Provides
     fun baseURL(): String
     {
-        return if (BuildConfig.IS_PRODUCTION) BuildConfig.URL_PRODUCTION else BuildConfig.URL_UAT
+        return "domain.com/" // example domain
     }
 }
