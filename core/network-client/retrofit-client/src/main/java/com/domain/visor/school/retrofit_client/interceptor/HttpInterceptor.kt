@@ -5,7 +5,7 @@ import okhttp3.Request
 import okhttp3.Response
 import retrofit2.Invocation
 
-class RetrofitClientInterceptor(private val authKey: String = "", private val authValue: String = "") : Interceptor {
+class HttpInterceptor(private val authKey: String = "", private val authValue: String = "") : Interceptor {
     @Retention(value = AnnotationRetention.RUNTIME)
     @Target(AnnotationTarget.FUNCTION)
     annotation class Authorized

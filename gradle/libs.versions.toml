@@ -22,6 +22,9 @@ rxjava = "3.1.12"
 rxandroid = "3.0.2"
 adapterRxjava3 = "3.0.0"
 
+# Dagger-Hilt
+hiltAndroid = "2.49"
+
 [libraries]
 # core libs
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -58,6 +61,9 @@ converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
 adapter-rxjava3 = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "adapterRxjava3" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 
 [bundles]
 androidx-compose-ui-tools = ["androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling", "androidx-ui-tooling-preview"]
