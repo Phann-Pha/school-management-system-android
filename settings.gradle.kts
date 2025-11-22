@@ -21,14 +21,14 @@ dependencyResolutionManagement {
     }
 }
 
-private fun module(dir: String, modules: List<String>) =
-    modules.forEach { module -> include("$dir:$module") }
+private fun module(dir: String, modules: List<String>) {
+    return modules.forEach { module -> include("$dir:$module") }
+}
 
 include(":app")
 module(
     dir = "core",
     modules = listOf(
         "network-client:ktor-client",
-        "network-client:retrofit-client"
     )
 )
