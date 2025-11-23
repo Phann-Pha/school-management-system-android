@@ -31,5 +31,6 @@ module(
     modules = listOf(
         "network-client:ktor-client",
         "network-client:retrofit-client",
+        "network-client:core-executor",
     )
 )
