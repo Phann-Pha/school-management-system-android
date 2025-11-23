@@ -5,8 +5,8 @@ coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
-lifecycleRuntimeKtx = "2.9.3"
-activityCompose = "1.11.0"
+lifecycleRuntimeKtx = "2.10.0"
+activityCompose = "1.12.0"
 composeBom = "2025.09.00"
 
 appcompat = "1.7.1"
@@ -23,7 +23,7 @@ rxandroid = "3.0.2"
 adapterRxjava3 = "3.0.0"
 
 # Dagger-Hilt
-hiltAndroid = "2.49"
+hiltAndroid = "2.57.2"
 
 [libraries]
 # core libs

@@ -24,7 +24,7 @@ class ClientBuilder @Inject constructor()
 
     @Provides
     @Named(value = "RetrofitBuilder")
-    private fun onRetrofitBuilder(): Retrofit = Retrofit.Builder().baseUrl(domain.baseURL())
+    internal fun onRetrofitBuilder(): Retrofit = Retrofit.Builder().baseUrl(domain.baseURL())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .client(client.okHttpClient())
