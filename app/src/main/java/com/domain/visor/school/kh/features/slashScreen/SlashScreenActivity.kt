@@ -59,10 +59,7 @@ fun SlashScreen() {
             .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         // Illustration
         Image(
@@ -77,8 +74,9 @@ fun SlashScreen() {
 
         Text(
             text = "1.0.0",
-            color = Color(0xFF2E8B57),
-            fontSize = 16.sp
+            color = colorResource(R.color.black),
+            fontSize = 14.sp,
+            modifier = Modifier.align(Alignment.Bottom as Alignment.Horizontal)
         )
     }
 }
