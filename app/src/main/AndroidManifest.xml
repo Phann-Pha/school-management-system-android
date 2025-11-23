@@ -23,6 +23,12 @@
         <activity
             android:name=".AppMainActivity"
             android:exported="true"/>
+        <activity
+            android:name=".features.language.LanguageActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".features.login.LoginActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

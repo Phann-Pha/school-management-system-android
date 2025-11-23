@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.slashScreen.White
 
-class SlashScreenActivity : ComponentActivity()
+class LoginActivity : ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
