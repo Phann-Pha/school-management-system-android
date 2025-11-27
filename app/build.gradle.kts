@@ -49,10 +49,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
-    // ui tools
     implementation(libs.bundles.androidx.compose.ui.tools)
-
-    // material ui 3
     implementation(libs.androidx.material3)
 
     // testing
