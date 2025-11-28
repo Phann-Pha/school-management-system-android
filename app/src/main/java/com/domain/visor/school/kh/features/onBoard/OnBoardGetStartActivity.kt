@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.language
+package com.domain.visor.school.kh.features.onBoard
 
 import android.app.Activity
 import android.content.Intent
@@ -7,8 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,13 +30,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.login.LoginActivity
 
-class LanguageActivity : ComponentActivity()
+class OnBoardGetStartActivity : ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -52,9 +52,9 @@ class LanguageActivity : ComponentActivity()
                         .verticalScroll(rememberScrollState())
                         .padding(paddings)
                 ) {
-                    LanguageSelectionScreen(
+                    OnBoardScreen(
                         onClick = {
-                        startActivity(LoginActivity.newIntent(this@LanguageActivity))
+                        startActivity(OnBoardFirstActivity.newIntent(this@OnBoardGetStartActivity))
                     })
                 }
             }
@@ -63,13 +63,13 @@ class LanguageActivity : ComponentActivity()
 
     companion object {
         fun newIntent(activity: Activity): Intent {
-            return Intent(activity, LanguageActivity::class.java)
+            return Intent(activity, OnBoardGetStartActivity::class.java)
         }
     }
 }
 
 @Composable
-private fun LanguageSelectionScreen(onClick: () -> Unit) {
+private fun OnBoardScreen(onClick: () -> Unit) {
 
     val illustration = painterResource(R.drawable.ic_slash_screen)
 
@@ -79,35 +79,40 @@ private fun LanguageSelectionScreen(onClick: () -> Unit) {
             .padding(horizontal = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(40.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.Top,
+            horizontalArrangement = Arrangement.End
+        ) {
+            Text(
+                text = "Skip",
+                color = colorResource(R.color.black),
+                fontSize = 16.sp,
+            )
+        }
 
-        // Company Name
-        Text(
-            text = "Company name",
-            color = Color(0xFF47A35A),
-            fontSize = 18.sp,
-        )
-
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(90.dp))
 
         // Illustration
         Image(
             painter = illustration,
             contentDescription = null,
             modifier = Modifier
-                .wrapContentWidth()
                 .wrapContentHeight()
+                .wrapContentWidth()
         )
 
         Spacer(modifier = Modifier.height(80.dp))
 
         Text(
-            text = "Please select your language.",
-            color = Color(0xFF47A35A),
-            fontSize = 16.sp
+            text = "Your smart solution for fast, accurate attendance tracking. Let’s take a quick tour!",
+            color = colorResource(R.color.black),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 20.dp)
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 
         // Khmer Button
         Button(
@@ -121,21 +126,13 @@ private fun LanguageSelectionScreen(onClick: () -> Unit) {
             )
         ) {
             Text(
-                text = "ភាសាខ្មែរ",
+                text = "Get start",
                 color = Color.White,
                 fontSize = 16.sp
             )
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        // English (Text Button)
-        Text(
-            text = "English",
-            color = Color(0xFF47A35A),
-            fontSize = 16.sp,
-            modifier = Modifier.clickable { }
-        )
+        Spacer(modifier = Modifier.height(10.dp))
     }
 }
 

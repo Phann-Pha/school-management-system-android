@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolManagementApp">
         <activity
-            android:name=".features.login.LoginActivity"
+            android:name=".features.slashScreen.SlashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.SchoolManagementApp">
             <intent-filter>
@@ -23,12 +23,27 @@
         <activity
             android:name=".AppMainActivity"
             android:exported="true"/>
-        <!--<activity
+        <activity
             android:name=".features.language.LanguageActivity"
-            android:exported="true"/>-->
-        <!--<activity
+            android:exported="true"/>
+        <activity
             android:name=".features.login.LoginActivity"
-            android:exported="true"/>-->
+            android:exported="true"/>
+        <activity
+            android:name=".features.onBoard.OnBoardGetStartActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".features.onBoard.OnBoardFirstActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".features.onBoard.OnBoardSecondActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".features.onBoard.OnBoardThirdActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".features.pinView.SetUpPinActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

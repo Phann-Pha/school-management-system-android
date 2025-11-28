@@ -1,10 +1,13 @@
 package com.domain.visor.school.kh.features.login
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -36,6 +40,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.features.onBoard.OnBoardGetStartActivity
 
 class LoginActivity : ComponentActivity()
 {
@@ -53,42 +58,48 @@ class LoginActivity : ComponentActivity()
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState())
                         .padding(paddings)
-                        .padding(horizontal = 10.dp, vertical = 10.dp)
                 ) {
-                    LoginScreen()
+                    LoginScreen(onClickBack = {
+                        finish()
+                    },
+                        onClick = {
+                            startActivity(OnBoardGetStartActivity.newIntent(this@LoginActivity))
+                        })
                 }
             }
+        }
+    }
+
+    companion object {
+        fun newIntent(activity: Activity): Intent {
+            return Intent(activity, LoginActivity::class.java)
         }
     }
 }
 
 @Composable
-fun LoginScreen() {
+private fun LoginScreen(onClick: () -> Unit, onClickBack: () -> Unit) {
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
-
     val image = painterResource(id = R.drawable.ic_slash_screen)
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp),
+            .padding(horizontal = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         // Back Arrow
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp),
+                .clickable(onClick = onClickBack)
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = "Back",
-                modifier = Modifier.size(28.dp)
+                modifier = Modifier.size(24.dp)
             )
         }
 
@@ -99,8 +110,7 @@ fun LoginScreen() {
             painter = image,
             contentDescription = null,
             modifier = Modifier
-                .height(180.dp)
-                .padding(top = 16.dp)
+                .height(220.dp)
         )
 
         Spacer(modifier = Modifier.height(60.dp))
@@ -132,19 +142,19 @@ fun LoginScreen() {
 
         // Login Button
         Button(
-            onClick = {},
+            onClick = onClick,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(58.dp),
+                .height(56.dp),
             shape = RoundedCornerShape(50),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF6EDB60)
             )
         ) {
-            Text("Login", fontSize = 18.sp)
+            Text("Login", fontSize = 16.sp)
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
             text = "Forgot password",
