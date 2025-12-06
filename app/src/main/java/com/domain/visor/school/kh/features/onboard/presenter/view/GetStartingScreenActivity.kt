@@ -53,7 +53,11 @@ class GetStartingScreenActivity : ComponentActivity() {
                         painter = painterResource(id = R.drawable.image_get_starting),
                         contentDescription = null
                     )
-                    FooterGetStartingScreen(navigateBottomHeight = padding.calculateBottomPadding())
+                    FooterGetStartingScreen(navigateBottomHeight = padding.calculateBottomPadding()) {
+                        // Handle clicked action
+                        startActivity(OnboardingScreenActivity.onInstance(activity = activity))
+                        finish()
+                    }
                 }
             }
         }
