@@ -15,7 +15,7 @@
                 android:exported="false"
                 android:theme="@style/Theme.SchoolManagementApp"/>
         <activity
-                android:name=".features.onboard.presenter.view.MainOnboardActivity"
+                android:name=".features.onboard.presenter.view.GetStartingScreenActivity"
                 android:exported="true"
                 android:theme="@style/Theme.SchoolManagementApp">
             <intent-filter>
@@ -24,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".features.onboard.presenter.view.OnboardingScreenActivity"
+                android:exported="false"
+                android:theme="@style/Theme.SchoolManagementApp"/>
     </application>
 
 </manifest>

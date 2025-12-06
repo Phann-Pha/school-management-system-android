@@ -11,21 +11,23 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.domain.visor.school.kh.features.onboard.presenter.viewmodel.MainOnboardViewModel
+import com.domain.visor.school.kh.features.onboard.presenter.viewmodel.OnboardingScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-class MainOnboardActivity : ComponentActivity() {
+class OnboardingScreenActivity : ComponentActivity() {
 
     companion object {
-        private const val TAG = "MainOnboardActivity"
-        fun onInstance(activity: Activity) = Intent(activity, MainOnboardActivity::class.java)
+        private const val TAG = "OnboardingScreenActivity"
+        fun onInstance(activity: Activity) = Intent(activity, OnboardingScreenActivity::class.java)
     }
 
-    private val viewmodel: MainOnboardViewModel by viewModels()
+    private lateinit var activity: Activity
+    private val viewmodel: OnboardingScreenViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        activity = this@OnboardingScreenActivity
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -33,11 +35,5 @@ class MainOnboardActivity : ComponentActivity() {
 
             }
         }
-
-        onGlobalSync()
-    }
-
-    private fun onGlobalSync() {
-        viewmodel.onGlobalSync()
     }
 }

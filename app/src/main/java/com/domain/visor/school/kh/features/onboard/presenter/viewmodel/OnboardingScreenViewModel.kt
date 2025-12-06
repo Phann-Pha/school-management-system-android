@@ -5,9 +5,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainOnboardViewModel @Inject constructor() : ViewModel() {
+class OnboardingScreenViewModel @Inject constructor() : ViewModel() {
 
-    fun onGlobalSync() {
-        println("syne")
-    }
 }
