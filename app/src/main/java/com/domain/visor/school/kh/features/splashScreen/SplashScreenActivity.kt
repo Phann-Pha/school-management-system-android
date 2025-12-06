@@ -1,7 +1,6 @@
 package com.domain.visor.school.kh.features.splashScreen
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -22,10 +21,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.common.MobileSystem
 import com.domain.visor.school.kh.features.homeScreen.HomeScreenActivity
 import com.domain.visor.school.kh.features.onBoard.presenter.view.GetStartingScreenActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashScreenActivity : ComponentActivity()
 {
