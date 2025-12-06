@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.header
+package com.domain.visor.school.kh.features.onBoard.presenter.components.header
 
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState

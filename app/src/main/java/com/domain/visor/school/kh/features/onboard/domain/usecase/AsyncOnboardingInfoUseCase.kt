@@ -1,8 +1,8 @@
-package com.domain.visor.school.kh.features.onboard.domain.usecase
+package com.domain.visor.school.kh.features.onBoard.domain.usecase
 
 import com.domain.visor.school.core_executor.helper.Resource
-import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
-import com.domain.visor.school.kh.features.onboard.domain.repository.OnboardingRepository
+import com.domain.visor.school.kh.features.onBoard.domain.model.DataOnboardingModel
+import com.domain.visor.school.kh.features.onBoard.domain.repository.OnboardingRepository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

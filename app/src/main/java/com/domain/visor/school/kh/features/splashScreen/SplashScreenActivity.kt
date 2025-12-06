@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.slashScreen
+package com.domain.visor.school.kh.features.splashScreen
 
 import android.os.Bundle
 import android.os.Handler
@@ -23,9 +23,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.language.LanguageActivity
+import com.domain.visor.school.kh.common.MobileSystem
+import com.domain.visor.school.kh.features.homeScreen.HomeScreenActivity
+import com.domain.visor.school.kh.features.onBoard.presenter.view.GetStartingScreenActivity
 
-class SlashScreenActivity : ComponentActivity()
+class SplashScreenActivity : ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -35,10 +37,20 @@ class SlashScreenActivity : ComponentActivity()
             SplashScreen()
         }
 
-        Handler().postDelayed({
-            startActivity(LanguageActivity.newIntent(this))
+        lifecycleScope.launch {
+            delay(1500)
+            onCheckActivate()
             finish()
-        }, 1500)
+        }
+    }
+
+    private fun onCheckActivate() {
+        val value = MobileSystem.onGetLocalStorage(this, "IS_ACTIVATE")
+        if (value == "TRUE") {
+            startActivity(HomeScreenActivity.onInstance(this))
+        } else {
+            startActivity(GetStartingScreenActivity.onInstance(this))
+        }
     }
 }
 

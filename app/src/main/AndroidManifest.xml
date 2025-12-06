@@ -10,48 +10,72 @@
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
                  android:theme="@style/Theme.SchoolManagementApp">
+
         <activity
                 android:name=".AppMainActivity"
                 android:exported="false"
                 android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
-                android:name=".features.onboard.presenter.view.GetStartingScreenActivity"
+                android:name=".features.splashScreen.SplashScreenActivity"
                 android:exported="true"
                 android:theme="@style/Theme.SchoolManagementApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
-                android:name=".features.onboard.presenter.view.OnboardingScreenActivity"
+                android:name=".features.onBoard.presenter.view.OnboardingScreenActivity"
                 android:exported="false"
                 android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
-            android:name=".AppMainActivity"
-            android:exported="true"/>
+            android:name=".features.onBoard.presenter.view.GetStartingScreenActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.language.LanguageActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.login.LoginActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.onBoard.OnBoardGetStartActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.onBoard.OnBoardFirstActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.onBoard.OnBoardSecondActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.onBoard.OnBoardThirdActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
         <activity
             android:name=".features.pinView.SetUpPinActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
+        <activity
+            android:name=".features.homeScreen.HomeScreenActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SchoolManagementApp"/>
+
     </application>
 
 </manifest>

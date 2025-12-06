@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.cards
+package com.domain.visor.school.kh.features.onBoard.presenter.components.cards
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
+import com.domain.visor.school.kh.features.onBoard.domain.model.DataOnboardingModel
 import kotlin.math.absoluteValue
 
 @Composable

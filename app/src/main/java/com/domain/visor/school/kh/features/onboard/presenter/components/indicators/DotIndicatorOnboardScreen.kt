@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.indicators
+package com.domain.visor.school.kh.features.onBoard.presenter.components.indicators
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

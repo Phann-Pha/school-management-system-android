@@ -1,7 +1,13 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.footer
+package com.domain.visor.school.kh.features.onBoard.presenter.components.footer
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -10,8 +16,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.presenter.components.buttons.BoundIconButtonAnimation
-import com.domain.visor.school.kh.features.onboard.presenter.components.indicators.DotIndicatorOnboardingScreen
+import com.domain.visor.school.kh.features.onBoard.presenter.components.buttons.BoundIconButtonAnimation
+import com.domain.visor.school.kh.features.onBoard.presenter.components.indicators.DotIndicatorOnboardingScreen
 
 @Composable
 fun FooterOnboardingScreen(navigateBottomHeight: Dp, state: PagerState, clicked: () -> Unit = {}) {

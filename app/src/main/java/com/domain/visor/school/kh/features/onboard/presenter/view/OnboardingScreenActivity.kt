@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.view
+package com.domain.visor.school.kh.features.onBoard.presenter.view
 
 import android.app.Activity
 import android.content.Intent
@@ -18,10 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.presenter.components.cards.CardItemOnboardingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.components.footer.FooterOnboardingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.components.header.HeaderOnboardingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.viewmodel.OnboardingScreenViewModel
+import com.domain.visor.school.kh.common.MobileSystem
+import com.domain.visor.school.kh.features.homeScreen.HomeScreenActivity
+import com.domain.visor.school.kh.features.onBoard.presenter.components.cards.CardItemOnboardingScreen
+import com.domain.visor.school.kh.features.onBoard.presenter.components.footer.FooterOnboardingScreen
+import com.domain.visor.school.kh.features.onBoard.presenter.components.header.HeaderOnboardingScreen
+import com.domain.visor.school.kh.features.onBoard.presenter.viewModel.OnboardingScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,7 +68,7 @@ class OnboardingScreenActivity : ComponentActivity() {
                                 .wrapContentHeight()
                                 .background(color = colorResource(id = R.color.white)),
                             state = state,
-                            userScrollEnabled = false
+                            userScrollEnabled = true
                         ) { page -> CardItemOnboardingScreen(item = items[page], state = state, page = page) }
                         FooterOnboardingScreen(
                             navigateBottomHeight = padding.calculateBottomPadding(),
@@ -77,7 +79,9 @@ class OnboardingScreenActivity : ComponentActivity() {
                                     state.animateScrollToPage(page = next)
 
                                     if (next == state.pageCount - 1) {
-                                        // Handle navigate action
+                                        startActivity(HomeScreenActivity.onInstance(activity = activity))
+                                        onActivate()
+                                        finish()
                                     }
                                 }
                             }
@@ -86,5 +90,9 @@ class OnboardingScreenActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun onActivate() {
+        MobileSystem.onSaveLocalStorage(this, "IS_ACTIVATE", "TRUE")
     }
 }
