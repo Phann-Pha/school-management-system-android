@@ -17,7 +17,7 @@ class AppMainActivity : ComponentActivity()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
                 
             }
         }
