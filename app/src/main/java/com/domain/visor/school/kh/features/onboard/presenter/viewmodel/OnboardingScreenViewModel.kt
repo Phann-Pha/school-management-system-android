@@ -13,9 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OnboardingScreenViewModel @Inject constructor(
-    private val asyncOnboardingInfoUseCase: AsyncOnboardingInfoUseCase
-) : ViewModel() {
+class OnboardingScreenViewModel @Inject constructor(private val usecase: AsyncOnboardingInfoUseCase) : ViewModel() {
     private val _uiState = MutableStateFlow(value = emptyList<DataOnboardingModel>())
     val uiState: StateFlow<List<DataOnboardingModel>> = _uiState.asStateFlow()
 
@@ -25,7 +23,7 @@ class OnboardingScreenViewModel @Inject constructor(
 
     private fun onAsyncOnboardingInfo() {
         viewModelScope.launch {
-            asyncOnboardingInfoUseCase.invoke().collect { result ->
+            usecase.invoke().collect { result ->
                 when (result) {
                     is Resource.Success -> {
                         _uiState.value = result.data ?: emptyList()
