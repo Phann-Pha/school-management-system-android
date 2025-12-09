@@ -45,7 +45,7 @@ class OnboardingScreenActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                var count = remember { 0 }
+                var count = 0
                 val items = viewmodel.uiState.collectAsState(context = Dispatchers.Default).value
                 val state = rememberPagerState(pageCount = { items.count() })
                 val scope = rememberCoroutineScope()
@@ -79,10 +79,12 @@ class OnboardingScreenActivity : ComponentActivity() {
                                     val next = (state.currentPage + 1).coerceAtMost(maximumValue = state.pageCount - 1)
                                     state.animateScrollToPage(page = next)
 
-                                    if (count == state.currentPage) {
-                                        onNavigateToLoginScreen()
+                                    if (next == state.pageCount - 1) {
+                                        if (count == state.pageCount) {
+                                            onNavigateToLoginScreen()
+                                        }
+                                        count = next + 1
                                     }
-                                    count += 1
                                 }
                             }
                         )
