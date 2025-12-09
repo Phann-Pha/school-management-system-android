@@ -6,6 +6,7 @@ import com.domain.visor.school.core_executor.helper.Resource
 import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
 import com.domain.visor.school.kh.features.onboard.domain.usecase.AsyncOnboardingInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,5 +36,10 @@ class OnboardingScreenViewModel @Inject constructor(private val usecase: AsyncOn
                 }
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelScope.cancel()
     }
 }
