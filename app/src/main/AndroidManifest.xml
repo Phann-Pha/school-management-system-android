@@ -28,6 +28,10 @@
                 android:name=".features.onboard.presenter.view.OnboardingScreenActivity"
                 android:exported="false"
                 android:theme="@style/Theme.SchoolManagementApp"/>
+        <activity
+                android:name=".features.auth.presentation.view.LoginScreenActivity"
+                android:exported="false"
+                android:theme="@style/Theme.SchoolManagementApp"/>
     </application>
 
 </manifest>

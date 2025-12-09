@@ -13,11 +13,13 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.features.auth.presentation.view.LoginScreenActivity
 import com.domain.visor.school.kh.features.onboard.presenter.components.cards.CardItemOnboardingScreen
 import com.domain.visor.school.kh.features.onboard.presenter.components.footer.FooterOnboardingScreen
 import com.domain.visor.school.kh.features.onboard.presenter.components.header.HeaderOnboardingScreen
@@ -43,6 +45,7 @@ class OnboardingScreenActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
+                var count = remember { 0 }
                 val items = viewmodel.uiState.collectAsState(context = Dispatchers.Default).value
                 val state = rememberPagerState(pageCount = { items.count() })
                 val scope = rememberCoroutineScope()
@@ -58,7 +61,7 @@ class OnboardingScreenActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
                         HeaderOnboardingScreen(statusBarHeight = padding.calculateTopPadding(), skip = {
-                            // Handler skip action
+                            onSkip()
                         })
                         HorizontalPager(
                             modifier = Modifier
@@ -76,9 +79,10 @@ class OnboardingScreenActivity : ComponentActivity() {
                                     val next = (state.currentPage + 1).coerceAtMost(maximumValue = state.pageCount - 1)
                                     state.animateScrollToPage(page = next)
 
-                                    if (next == state.pageCount - 1) {
-                                        // Handle navigate action
+                                    if (count == state.currentPage) {
+                                        onNavigateToLoginScreen()
                                     }
+                                    count += 1
                                 }
                             }
                         )
@@ -86,5 +90,15 @@ class OnboardingScreenActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun onNavigateToLoginScreen() {
+        startActivity(LoginScreenActivity.onNewInstance(activity = activity))
+        activity.finish()
+    }
+
+    private fun onSkip() {
+        startActivity(LoginScreenActivity.onNewInstance(activity = activity))
+        activity.finish()
     }
 }
