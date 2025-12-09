@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.view
+package com.domain.visor.school.kh.features.onboard.presentation.view
 
 import android.app.Activity
 import android.content.Intent
@@ -19,10 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.auth.presentation.view.LoginScreenActivity
-import com.domain.visor.school.kh.features.onboard.presenter.components.cards.CardItemOnboardingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.components.footer.FooterOnboardingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.components.header.HeaderOnboardingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.viewmodel.OnboardingScreenViewModel
+import com.domain.visor.school.kh.features.onboard.presentation.components.cards.CardItemOnboardingScreen
+import com.domain.visor.school.kh.features.onboard.presentation.components.footer.FooterOnboardingScreen
+import com.domain.visor.school.kh.features.onboard.presentation.components.header.HeaderOnboardingScreen
+import com.domain.visor.school.kh.features.onboard.presentation.viewmodel.OnboardingScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

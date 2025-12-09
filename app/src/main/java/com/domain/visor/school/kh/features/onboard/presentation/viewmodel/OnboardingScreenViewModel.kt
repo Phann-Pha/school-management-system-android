@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.viewmodel
+package com.domain.visor.school.kh.features.onboard.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

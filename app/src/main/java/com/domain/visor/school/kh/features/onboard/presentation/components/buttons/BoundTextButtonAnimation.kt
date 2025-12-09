@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.buttons
+package com.domain.visor.school.kh.features.onboard.presentation.components.buttons
 
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState

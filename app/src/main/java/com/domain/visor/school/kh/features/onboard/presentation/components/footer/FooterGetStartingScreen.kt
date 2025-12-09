@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.footer
+package com.domain.visor.school.kh.features.onboard.presentation.components.footer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.presenter.components.buttons.BoundTextButtonAnimation
+import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
 
 @Composable
 fun FooterGetStartingScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) {

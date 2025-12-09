@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.components.cards
+package com.domain.visor.school.kh.features.onboard.presentation.components.cards
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

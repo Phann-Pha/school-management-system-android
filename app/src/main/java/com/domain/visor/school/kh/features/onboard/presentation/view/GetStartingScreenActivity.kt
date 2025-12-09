@@ -1,4 +1,4 @@
-package com.domain.visor.school.kh.features.onboard.presenter.view
+package com.domain.visor.school.kh.features.onboard.presentation.view
 
 import android.app.Activity
 import android.content.Intent
@@ -16,8 +16,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.presenter.components.footer.FooterGetStartingScreen
-import com.domain.visor.school.kh.features.onboard.presenter.components.header.HeaderGetStartingScreen
+import com.domain.visor.school.kh.features.onboard.presentation.components.footer.FooterGetStartingScreen
+import com.domain.visor.school.kh.features.onboard.presentation.components.header.HeaderGetStartingScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
