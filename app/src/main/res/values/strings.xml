@@ -2,11 +2,21 @@
     <string name="app_name">SchoolManagementApp</string>
 
     <!--onboarding string-->
-    <string name="description_onboard_1">Monitor attendance instantly with up-to-date records, anytime, anywhere.</string>
-    <string name="description_onboard_2">Allow users to check in via QR code, biometrics, or manual entry — your way.</string>
+    <string name="description_onboard_1">Monitor attendance instantly with up-to-date records, anytime, anywhere.
+    </string>
+    <string name="description_onboard_2">Allow users to check in via QR code, biometrics, or manual entry — your way.
+    </string>
     <string name="description_onboard_3">Generate and export detailed reports in seconds — no more manual work.</string>
 
-    <string name="description_get_starting">Your smart solution for fast, accurate attendance tracking. Let’s take a quick tour!</string>
+    <string name="description_get_starting">Your smart solution for fast, accurate attendance tracking. Let’s take a
+        quick tour!
+    </string>
     <string name="skip">Skip</string>
     <string name="get_started">Get Started</string>
+
+    <!--    selecting languages-->
+    <string name="texh_visor">TEXH-VISOR</string>
+    <string name="please_selecting_your_language">Please select your langauge</string>
+    <string name="khmer">Khmer</string>
+    <string name="english">English</string>
 </resources>

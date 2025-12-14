@@ -7,4 +7,6 @@
     <!--onboard color-->
     <color name="active_dot_indicator">#70D65C</color>
     <color name="disactive_dot_indicator">#F0EDEB</color>
+
+    <color name="green_color">#70D65C</color>
 </resources>

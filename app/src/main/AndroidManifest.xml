@@ -16,6 +16,10 @@
                 android:theme="@style/Theme.SchoolManagementApp"/>
         <activity
                 android:name=".features.onboard.presentation.view.GetStartingScreenActivity"
+                android:exported="false"
+                android:theme="@style/Theme.SchoolManagementApp"/>
+        <activity
+                android:name=".features.language.presentation.view.SelectingLanguageScreenActivity"
                 android:exported="true"
                 android:theme="@style/Theme.SchoolManagementApp">
             <intent-filter>
@@ -24,10 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-                android:name=".features.language.presentation.view.SelectingLanguageScreenActivity"
-                android:exported="false"
-                android:theme="@style/Theme.SchoolManagementApp"/>
         <activity
                 android:name=".features.onboard.presentation.view.OnboardingScreenActivity"
                 android:exported="false"
