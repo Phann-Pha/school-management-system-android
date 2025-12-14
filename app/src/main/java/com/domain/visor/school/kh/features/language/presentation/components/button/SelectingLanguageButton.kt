@@ -38,7 +38,7 @@ fun SelectingLanguageButton(clicked: () -> Unit = {}) {
             defaultColor = colorResource(id = R.color.active_dot_indicator),
             clicked = clicked
         )
-        Spacer(modifier = Modifier.height(height = 12.dp))
+        Spacer(modifier = Modifier.height(height = 8.dp))
         ButtonView(
             text = stringResource(id = R.string.english),
             isDefault = false,
@@ -65,7 +65,7 @@ private fun ButtonView(text: String, isDefault: Boolean = false, defaultColor: C
         modifier = Modifier
             .scale(scale.value)
             .fillMaxWidth()
-            .height(height = 45.dp)
+            .wrapContentHeight()
             .pointerInteropFilter { event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
@@ -80,6 +80,9 @@ private fun ButtonView(text: String, isDefault: Boolean = false, defaultColor: C
             }
     ) {
         Text(
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(vertical = 8.dp),
             text = text,
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
