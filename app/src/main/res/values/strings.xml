@@ -12,7 +12,7 @@
 
     <!--    selecting languages-->
     <string name="texh_visor">Texh-Visor</string>
-    <string name="please_selecting_your_language">Please Select Your Language</string>
+    <string name="please_selecting_your_language">Please select your language</string>
     <string name="khmer">ភាសាខ្មែរ</string>
     <string name="english">English</string>
 </resources>
