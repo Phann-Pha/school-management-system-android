@@ -8,12 +8,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -21,9 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 
 @Composable
-fun SelectingLanguageButton(clicked: () -> Unit = {}) {
+fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (LanguageStatus) -> Unit = {}) {
+
+    val khmer = remember { mutableStateOf(value = selected.value == LanguageStatus.KHMER) }
+    val english = remember { mutableStateOf(value = selected.value == LanguageStatus.ENGLISH) }
 
     Column(
         modifier = Modifier
@@ -32,34 +36,40 @@ fun SelectingLanguageButton(clicked: () -> Unit = {}) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ButtonView(
+        ButtonKhmer(
             text = stringResource(id = R.string.khmer),
-            isDefault = true,
-            defaultColor = colorResource(id = R.color.active_dot_indicator),
-            clicked = clicked
+            state = khmer,
+            clicked = {
+                khmer.value = true
+                english.value = false
+                clicked.invoke(LanguageStatus.KHMER)
+            }
         )
         Spacer(modifier = Modifier.height(height = 8.dp))
-        ButtonView(
+        ButtonEnglish(
             text = stringResource(id = R.string.english),
-            isDefault = false,
-            defaultColor = colorResource(id = R.color.white),
-            clicked = clicked
+            state = english,
+            clicked = {
+                khmer.value = false
+                english.value = true
+                clicked.invoke(LanguageStatus.ENGLISH)
+            }
         )
     }
 }
 
 @Composable
-private fun ButtonView(text: String, isDefault: Boolean = false, defaultColor: Color, clicked: () -> Unit) {
+private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: (LanguageStatus) -> Unit) {
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
 
     Button(
         onClick = { },
         colors = ButtonColors(
-            contentColor = if (isDefault) defaultColor else colorResource(id = R.color.white),
-            containerColor = if (isDefault) defaultColor else colorResource(id = R.color.white),
-            disabledContentColor = if (isDefault) defaultColor else colorResource(id = R.color.white),
-            disabledContainerColor = if (isDefault) defaultColor else colorResource(id = R.color.white)
+            contentColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white),
+            containerColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white),
+            disabledContentColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white),
+            disabledContainerColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white)
         ),
         shape = RoundedCornerShape(size = 12.dp),
         modifier = Modifier
@@ -69,7 +79,7 @@ private fun ButtonView(text: String, isDefault: Boolean = false, defaultColor: C
             .pointerInteropFilter { event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        clicked.invoke()
+                        clicked.invoke(LanguageStatus.KHMER)
                         selected.value = true
                     }
 
@@ -86,7 +96,50 @@ private fun ButtonView(text: String, isDefault: Boolean = false, defaultColor: C
             text = text,
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
-            color = if (isDefault) colorResource(id = R.color.white) else colorResource(id = R.color.active_dot_indicator)
+            color = colorResource(id = if (state.value) R.color.white else R.color.active_dot_indicator)
+        )
+    }
+}
+
+@Composable
+private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: (LanguageStatus) -> Unit) {
+    val selected = remember { mutableStateOf(value = false) }
+    val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
+
+    Button(
+        onClick = { },
+        colors = ButtonColors(
+            contentColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white),
+            containerColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white),
+            disabledContentColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white),
+            disabledContainerColor = colorResource(id = if (state.value) R.color.active_dot_indicator else R.color.white)
+        ),
+        shape = RoundedCornerShape(size = 12.dp),
+        modifier = Modifier
+            .scale(scale.value)
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .pointerInteropFilter { event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        clicked.invoke(LanguageStatus.KHMER)
+                        selected.value = true
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        selected.value = false
+                    }
+                }; true
+            }
+    ) {
+        Text(
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(vertical = 8.dp),
+            text = text,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            color = colorResource(id = if (state.value) R.color.white else R.color.active_dot_indicator)
         )
     }
 }

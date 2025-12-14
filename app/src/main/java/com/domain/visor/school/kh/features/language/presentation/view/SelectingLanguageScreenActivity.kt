@@ -3,6 +3,8 @@ package com.domain.visor.school.kh.features.language.presentation.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -11,12 +13,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
@@ -38,6 +43,9 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
+
+                val language = remember { mutableStateOf(value = LanguageStatus.ENGLISH) }
+
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -60,8 +68,15 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
                             painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
-                        FooterSelectingLanguageScreen(navigateBottomHeight = padding.calculateBottomPadding())
+                        FooterSelectingLanguageScreen(
+                            navigateBottomHeight = padding.calculateBottomPadding(),
+                            language = language
+                        ) { status ->
+                            language.value = status
+                        }
                     }
+
+                    Toast.makeText(activity, "${language.value}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
