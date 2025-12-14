@@ -1,6 +1,7 @@
 package com.domain.visor.school.kh.base
 
 import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
@@ -22,13 +23,13 @@ open class BaseComponentActivity : ComponentActivity(), BaseComponentService {
     }
 
     @Composable
-    override fun stringContext(): Context {
+    override fun Context.resource(lang: LocalizationDataStore): Resources {
         val tag = lang.value.collectAsStateWithLifecycle(initialValue = LocalState.ENG.value).value
         val local = Locale(tag ?: LocalState.ENG.value)
         Locale.setDefault(local)
         val config = resources.configuration
         config.setLocale(local)
-        return createConfigurationContext(config)
+        return createConfigurationContext(config).resources
     }
 
     override fun onChangeIconStatusBarColor(isLightStatusBars: Boolean) {
