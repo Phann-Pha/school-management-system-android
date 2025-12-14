@@ -36,7 +36,7 @@ fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit 
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth(fraction = 0.85f)
+                    .fillMaxWidth(fraction = 0.8f)
                     .background(color = colorResource(id = R.color.white)),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -46,14 +46,14 @@ fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit 
                         .fillMaxWidth()
                         .background(color = colorResource(id = R.color.transparent))
                         .padding(vertical = 4.dp),
-                    fontSize = 12.sp,
+                    fontSize = 15.sp,
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
                     text = stringResource(id = R.string.please_selecting_your_language)
                 )
 
-                Spacer(modifier = Modifier.height(height = 16.dp))
+                Spacer(modifier = Modifier.height(height = 24.dp))
                 SelectingLanguageButton(clicked = clicked)
             }
         }
