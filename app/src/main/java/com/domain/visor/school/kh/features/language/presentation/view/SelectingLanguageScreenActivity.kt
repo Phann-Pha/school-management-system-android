@@ -23,6 +23,7 @@ import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
+import com.domain.visor.school.kh.features.onboard.presentation.view.GetStartingScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -70,21 +71,24 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
                             language = language
                         ) { status ->
                             language.value = status
+                            onLanguageSelected(status = status) {
+                                startActivity(GetStartingScreenActivity.onInstance(activity = activity))
+                            }
                         }
                     }
-
-                    onLanguageSelected(status = language.value)
                 }
             }
         }
     }
 
-    private fun onLanguageSelected(status: LanguageStatus) {
+    private fun onLanguageSelected(status: LanguageStatus, callback: () -> Unit) {
         when (status) {
             LanguageStatus.ENGLISH -> {
+                callback.invoke()
             }
 
             LanguageStatus.KHMER -> {
+                callback.invoke()
             }
         }
     }
