@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -28,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderSelectingLanguageScreen( statusBarHeight: Dp, backed: () -> Unit) {
+fun HeaderSelectingLanguageScreen(statusBarHeight: Dp, backed: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,9 +49,9 @@ fun HeaderSelectingLanguageScreen( statusBarHeight: Dp, backed: () -> Unit) {
         }
         Spacer(modifier = Modifier.height(height = 24.dp))
         Text(
-            text = stringResource(id = R.string.texh_visor),
+            text = "",
             fontSize = 14.sp,
-            color = colorResource(id = R.color.green_color),
+            color = colorResource(id = R.color.black),
             fontWeight = FontWeight.Normal
         )
     }
