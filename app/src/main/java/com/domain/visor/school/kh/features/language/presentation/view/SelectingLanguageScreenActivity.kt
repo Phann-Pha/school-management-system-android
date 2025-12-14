@@ -59,7 +59,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
                         HeaderSelectingLanguageScreen(statusBarHeight = padding.calculateTopPadding(), backed = {
-                            // action back
+                            finish()
                         })
                         Image(
                             modifier = Modifier
