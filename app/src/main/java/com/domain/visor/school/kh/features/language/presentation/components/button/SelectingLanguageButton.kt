@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.features.language.presentation.components.button
 
+import android.content.Context
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.*
@@ -16,15 +17,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
+import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.resource
 
 @Composable
-fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (LanguageStatus) -> Unit = {}) {
+fun SelectingLanguageButton(
+    context: Context,
+    lang: LocalizationDataStore,
+    selected: MutableState<LanguageStatus>,
+    clicked: (LanguageStatus) -> Unit = {}
+) {
 
     val khmer = remember { mutableStateOf(value = selected.value == LanguageStatus.KHMER) }
     val english = remember { mutableStateOf(value = selected.value == LanguageStatus.ENGLISH) }
@@ -37,7 +44,7 @@ fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (La
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ButtonKhmer(
-            text = stringResource(id = R.string.khmer),
+            text = context.resource(lang).getString(R.string.khmer),
             state = khmer,
             clicked = {
                 khmer.value = true
@@ -47,7 +54,7 @@ fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (La
         )
         Spacer(modifier = Modifier.height(height = 8.dp))
         ButtonEnglish(
-            text = stringResource(id = R.string.english),
+            text = context.resource(lang).getString(R.string.english),
             state = english,
             clicked = {
                 khmer.value = false

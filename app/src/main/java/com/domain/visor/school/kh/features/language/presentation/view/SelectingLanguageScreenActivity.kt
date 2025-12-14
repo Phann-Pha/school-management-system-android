@@ -70,6 +70,8 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             contentDescription = null
                         )
                         FooterSelectingLanguageScreen(
+                            context = activity,
+                            lang = lang,
                             navigateBottomHeight = padding.calculateBottomPadding(),
                             language = language
                         ) { status ->

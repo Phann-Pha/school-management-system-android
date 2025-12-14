@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.features.language.presentation.components.footer
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
@@ -8,7 +9,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -16,9 +16,13 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
+import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.resource
 
 @Composable
 fun FooterSelectingLanguageScreen(
+    context: Context,
+    lang: LocalizationDataStore,
     navigateBottomHeight: Dp,
     language: MutableState<LanguageStatus>,
     clicked: (LanguageStatus) -> Unit = {}
@@ -56,11 +60,16 @@ fun FooterSelectingLanguageScreen(
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
-                    text = stringResource(id = R.string.please_selecting_your_language)
+                    text = context.resource(lang).getString(R.string.please_selecting_your_language)
                 )
 
                 Spacer(modifier = Modifier.height(height = 24.dp))
-                SelectingLanguageButton(selected = language, clicked = clicked)
+                SelectingLanguageButton(
+                    context = context,
+                    lang = lang,
+                    selected = language,
+                    clicked = clicked
+                )
             }
         }
     }
