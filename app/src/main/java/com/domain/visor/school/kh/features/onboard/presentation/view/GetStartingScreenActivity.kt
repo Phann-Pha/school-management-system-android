@@ -3,7 +3,6 @@ package com.domain.visor.school.kh.features.onboard.presentation.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
@@ -16,12 +15,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.onboard.presentation.components.footer.FooterGetStartingScreen
 import com.domain.visor.school.kh.features.onboard.presentation.components.header.HeaderGetStartingScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GetStartingScreenActivity : ComponentActivity() {
+class GetStartingScreenActivity : BaseComponentActivity() {
     companion object {
         private const val TAG = "GetStartingActivity"
         fun onInstance(activity: Activity) = Intent(activity, GetStartingScreenActivity::class.java)
@@ -42,9 +42,12 @@ class GetStartingScreenActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    HeaderGetStartingScreen(statusBarHeight = padding.calculateTopPadding(), backed = { finish() }) {
-                        // Handle skip action
-                    }
+                    HeaderGetStartingScreen(
+                        context = activity,
+                        lang = lang,
+                        statusBarHeight = padding.calculateTopPadding(),
+                        backed = { finish() },
+                        skip = { finish() })
                     Image(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -53,7 +56,11 @@ class GetStartingScreenActivity : ComponentActivity() {
                         painter = painterResource(id = R.drawable.image_get_starting),
                         contentDescription = null
                     )
-                    FooterGetStartingScreen(navigateBottomHeight = padding.calculateBottomPadding()) {
+                    FooterGetStartingScreen(
+                        context = activity,
+                        lang = lang,
+                        navigateBottomHeight = padding.calculateBottomPadding()
+                    ) {
                         // Handle clicked action
                         startActivity(OnboardingScreenActivity.onInstance(activity = activity))
                         finish()

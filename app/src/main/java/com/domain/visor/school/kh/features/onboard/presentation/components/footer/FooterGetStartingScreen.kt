@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.footer
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
@@ -7,16 +8,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
+import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.resource
 
 @Composable
-fun FooterGetStartingScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) {
+fun FooterGetStartingScreen(
+    context: Context,
+    lang: LocalizationDataStore,
+    navigateBottomHeight: Dp,
+    clicked: () -> Unit = {}
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,10 +57,13 @@ fun FooterGetStartingScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) 
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
-                    text = stringResource(id = R.string.description_get_starting)
+                    text = context.resource(lang).getString(R.string.description_get_starting)
                 )
                 Spacer(modifier = Modifier.height(height = 32.dp))
-                BoundTextButtonAnimation(text = stringResource(id = R.string.get_started), clicked = clicked)
+                BoundTextButtonAnimation(
+                    text = context.resource(lang).getString(R.string.get_started),
+                    clicked = clicked
+                )
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.header
 
+import android.content.Context
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
@@ -20,15 +21,21 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.resource
 
 @Composable
-fun HeaderGetStartingScreen(statusBarHeight: Dp, backed: () -> Unit, skip: () -> Unit) {
+fun HeaderGetStartingScreen(
+    context: Context,
+    lang: LocalizationDataStore,
+    statusBarHeight: Dp,
+    backed: () -> Unit, skip: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,7 +47,10 @@ fun HeaderGetStartingScreen(statusBarHeight: Dp, backed: () -> Unit, skip: () ->
         verticalAlignment = Alignment.CenterVertically
     ) {
         ButtonBackView(clicked = backed)
-        ButtonSkipView(clicked = skip)
+        ButtonSkipView(
+            text = context.resource(lang).getString(R.string.skip),
+            clicked = skip
+        )
     }
 }
 
@@ -67,7 +77,7 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
                         MotionEvent.ACTION_UP -> {
                             selected.value = false
                         }
-                    };true
+                    }; true
                 },
             shape = CircleShape,
             contentColor = colorResource(id = R.color.white),
@@ -87,7 +97,7 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
 }
 
 @Composable
-private fun ButtonSkipView(clicked: () -> Unit = {}) {
+private fun ButtonSkipView(text: String, clicked: () -> Unit = {}) {
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -108,7 +118,7 @@ private fun ButtonSkipView(clicked: () -> Unit = {}) {
             }
     ) {
         Text(
-            text = stringResource(id = R.string.skip),
+            text = text,
             fontSize = 13.sp,
             color = colorResource(id = R.color.black),
             fontWeight = FontWeight.Normal
