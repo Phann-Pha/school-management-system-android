@@ -1,9 +1,11 @@
-package com.domain.visor.school.kh.localization
+package com.domain.visor.school.kh.localization.utils
 
 import android.content.Context
 import android.content.res.Resources
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.domain.visor.school.kh.localization.LocalState
+import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
 import java.util.Locale
 
 @Composable

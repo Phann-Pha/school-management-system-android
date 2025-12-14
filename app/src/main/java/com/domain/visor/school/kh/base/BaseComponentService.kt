@@ -3,7 +3,7 @@ package com.domain.visor.school.kh.base
 import android.content.Context
 import android.content.res.Resources
 import androidx.compose.runtime.Composable
-import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
 
 interface BaseComponentService {
     /** This property used for alternative language

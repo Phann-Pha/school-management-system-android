@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
-import com.domain.visor.school.kh.localization.LocalizationDataStore
-import com.domain.visor.school.kh.localization.resource
+import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
+import com.domain.visor.school.kh.localization.utils.resource
 
 @Composable
 fun FooterSelectingLanguageScreen(

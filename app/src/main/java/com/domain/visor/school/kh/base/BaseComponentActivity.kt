@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.domain.visor.school.kh.localization.LocalState
-import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

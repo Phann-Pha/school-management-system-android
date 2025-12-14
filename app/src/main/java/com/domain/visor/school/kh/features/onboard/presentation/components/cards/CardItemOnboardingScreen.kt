@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
-import com.domain.visor.school.kh.localization.LocalizationDataStore
-import com.domain.visor.school.kh.localization.resource
+import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
+import com.domain.visor.school.kh.localization.utils.resource
 import kotlin.math.absoluteValue
 
 @Composable
