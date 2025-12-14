@@ -25,7 +25,7 @@ import androidx.lifecycle.lifecycleScope
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.common.MobileSystem
 import com.domain.visor.school.kh.features.homeScreen.HomeScreenActivity
-import com.domain.visor.school.kh.features.onBoard.presenter.view.GetStartingScreenActivity
+import com.domain.visor.school.kh.features.onboard.presentation.view.GetStartingScreenActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
