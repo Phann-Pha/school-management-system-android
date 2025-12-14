@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderSelectingLanguageScreen(statusBarHeight: Dp, backed: () -> Unit) {
+fun HeaderSelectingLanguageScreen( statusBarHeight: Dp, backed: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

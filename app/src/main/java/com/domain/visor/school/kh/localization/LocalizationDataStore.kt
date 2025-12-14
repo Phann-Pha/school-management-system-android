@@ -11,15 +11,15 @@ import kotlinx.coroutines.flow.map
 
 class LocalizationDataStore(private val context: Context) {
     companion object {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("local_language")
-        val localizationKey = stringPreferencesKey("language")
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "local_language")
+        private val key = stringPreferencesKey(name = "language")
+
+        private const val EN = "en-US"
     }
 
-    val localization: Flow<String?> = context.dataStore.data.map { preferences ->
-        preferences[localizationKey] ?: "en-US"
-    }
+    val value: Flow<String?> = context.dataStore.data.map { preferences -> preferences[key] ?: EN }
 
     suspend fun update(value: String) {
-        context.dataStore.edit { preferences -> preferences[localizationKey] = value }
+        context.dataStore.edit { preferences -> preferences[key] = value }
     }
 }
