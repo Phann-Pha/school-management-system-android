@@ -42,7 +42,7 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
 
-                val language = remember { mutableStateOf(value = LanguageStatus.ENGLISH) }
+                val language = remember { mutableStateOf(value = LanguageStatus.KHMER) }
 
                 Box(
                     modifier = Modifier
@@ -82,11 +82,9 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
     private fun onLanguageSelected(status: LanguageStatus) {
         when (status) {
             LanguageStatus.ENGLISH -> {
-
             }
 
             LanguageStatus.KHMER -> {
-
             }
         }
     }
