@@ -39,7 +39,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.OnBoardGetStartActivity
 
 class LoginActivity : ComponentActivity()
 {
@@ -61,9 +60,7 @@ class LoginActivity : ComponentActivity()
                     LoginScreen(onClickBack = {
                         finish()
                     },
-                        onClick = {
-                            startActivity(OnBoardGetStartActivity.newIntent(this@LoginActivity))
-                        })
+                        onClick = {})
                 }
             }
         }
