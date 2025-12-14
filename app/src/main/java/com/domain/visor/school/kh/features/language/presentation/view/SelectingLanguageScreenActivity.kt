@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
@@ -46,7 +47,12 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
 
-                val language = remember { mutableStateOf(value = LanguageStatus.KHMER) }
+                val tag = when (lang.value.collectAsStateWithLifecycle(initialValue = LocalState.ENG.value).value) {
+                    LocalState.ENG.value -> LanguageStatus.ENGLISH
+                    LocalState.KH.value -> LanguageStatus.KHMER
+                    else -> LanguageStatus.ENGLISH
+                }
+                val language = remember { mutableStateOf(value = tag) }
 
                 Box(
                     modifier = Modifier
@@ -58,9 +64,10 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
-                        HeaderSelectingLanguageScreen(statusBarHeight = padding.calculateTopPadding(), backed = {
-                            finish()
-                        })
+                        HeaderSelectingLanguageScreen(
+                            statusBarHeight = padding.calculateTopPadding(),
+                            backed = { finish() }
+                        )
                         Image(
                             modifier = Modifier
                                 .fillMaxWidth()
