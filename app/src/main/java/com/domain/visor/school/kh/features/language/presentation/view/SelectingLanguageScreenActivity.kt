@@ -57,7 +57,7 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
                                 .fillMaxWidth()
                                 .height(height = 250.dp)
                                 .background(colorResource(id = R.color.white)),
-                            painter = painterResource(id = R.drawable.image_get_starting),
+                            painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
                         FooterSelectingLanguageScreen(navigateBottomHeight = padding.calculateBottomPadding())

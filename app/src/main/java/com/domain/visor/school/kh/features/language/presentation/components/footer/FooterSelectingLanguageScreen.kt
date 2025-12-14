@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
+import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
 
 @Composable
 fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) {
@@ -50,20 +50,11 @@ fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit 
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
-                    text = stringResource(id = R.string.please_selecting_your_language).uppercase()
+                    text = stringResource(id = R.string.please_selecting_your_language)
                 )
 
                 Spacer(modifier = Modifier.height(height = 16.dp))
-
-                BoundTextButtonAnimation(
-                    text = stringResource(id = R.string.khmer).uppercase(),
-                    clicked = clicked
-                )
-                Spacer(modifier = Modifier.height(height = 12.dp))
-                BoundTextButtonAnimation(
-                    text = stringResource(id = R.string.english).uppercase(),
-                    clicked = clicked
-                )
+                SelectingLanguageButton(clicked = clicked)
             }
         }
     }

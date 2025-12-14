@@ -17,6 +17,6 @@
     <!--    selecting languages-->
     <string name="texh_visor">TEXH-VISOR</string>
     <string name="please_selecting_your_language">Please select your langauge</string>
-    <string name="khmer">Khmer</string>
+    <string name="khmer">ភាសារខ្មែរ</string>
     <string name="english">English</string>
 </resources>
