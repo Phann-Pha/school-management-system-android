@@ -74,7 +74,7 @@ class LoginActivity : ComponentActivity()
 }
 
 @Composable
-private fun LoginScreen(onClick: () -> Unit, onClickBack: () -> Unit) {
+fun LoginScreen(onClick: () -> Unit, onClickBack: () -> Unit) {
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val image = painterResource(id = R.drawable.ic_slash_screen)
