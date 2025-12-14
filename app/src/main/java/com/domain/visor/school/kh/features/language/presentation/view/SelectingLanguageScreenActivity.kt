@@ -3,8 +3,6 @@ package com.domain.visor.school.kh.features.language.presentation.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -53,8 +51,7 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
-                        modifier = Modifier
-                            .fillMaxSize(),
+                        modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
                         HeaderSelectingLanguageScreen(statusBarHeight = padding.calculateTopPadding(), backed = {
@@ -76,8 +73,20 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
                         }
                     }
 
-                    Toast.makeText(activity, "${language.value}", Toast.LENGTH_SHORT).show()
+                    onLanguageSelected(status = language.value)
                 }
+            }
+        }
+    }
+
+    private fun onLanguageSelected(status: LanguageStatus) {
+        when (status) {
+            LanguageStatus.ENGLISH -> {
+
+            }
+
+            LanguageStatus.KHMER -> {
+
             }
         }
     }
