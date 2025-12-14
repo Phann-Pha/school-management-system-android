@@ -23,7 +23,7 @@ fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit 
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
             .padding(bottom = navigateBottomHeight)
-            .padding(bottom = 42.dp),
+            .padding(bottom = 24.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(

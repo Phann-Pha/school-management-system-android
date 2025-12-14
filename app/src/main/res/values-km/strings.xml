@@ -13,7 +13,7 @@
 
     <!--    selecting languages-->
     <string name="texh_visor">Texh-Visor</string>
-    <string name="please_selecting_your_language">សូមជ្រើសរើសភាសារបស់អ្នក។</string>
+    <string name="please_selecting_your_language">សូមជ្រើសរើសភាសារបស់អ្នក</string>
     <string name="khmer">ភាសាខ្មែរ</string>
     <string name="english">ភាសាអង់គ្លេស</string>
 </resources>
