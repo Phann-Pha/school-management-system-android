@@ -67,4 +67,7 @@ dependencies {
     // dagger hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.gson)
+    implementation(libs.androidx.datastore.preferences) // datastore preferences
 }

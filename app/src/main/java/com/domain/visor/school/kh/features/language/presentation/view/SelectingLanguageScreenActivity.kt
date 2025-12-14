@@ -18,13 +18,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
 import com.domain.visor.school.kh.features.onboard.presentation.view.GetStartingScreenActivity
+import com.domain.visor.school.kh.localization.LocalizationDataStore
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SelectingLanguageScreenActivity : ComponentActivity() {
@@ -36,13 +40,20 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
     private lateinit var activity: Activity
     private val viewmodel: SelectingLanguageScreenViewModel by viewModels()
 
+    private lateinit var localizationDataStore: LocalizationDataStore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         activity = this@SelectingLanguageScreenActivity
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        onInitIntentObject()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
 
+                val localization =
+                    localizationDataStore.localization.collectAsStateWithLifecycle(initialValue = "en-US").value
+                        ?: "en-US"
                 val language = remember { mutableStateOf(value = LanguageStatus.KHMER) }
 
                 Box(
@@ -81,13 +92,19 @@ class SelectingLanguageScreenActivity : ComponentActivity() {
         }
     }
 
+    private fun onInitIntentObject() {
+        localizationDataStore = LocalizationDataStore(context = activity)
+    }
+
     private fun onLanguageSelected(status: LanguageStatus, callback: () -> Unit) {
         when (status) {
             LanguageStatus.ENGLISH -> {
+                lifecycleScope.launch { localizationDataStore.update(value = "en-US") }
                 callback.invoke()
             }
 
             LanguageStatus.KHMER -> {
+                lifecycleScope.launch { localizationDataStore.update(value = "km") }
                 callback.invoke()
             }
         }
