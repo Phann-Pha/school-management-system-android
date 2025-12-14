@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.header
 
+import android.content.Context
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -13,15 +14,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.resource
 
 @Composable
-fun HeaderOnboardingScreen(statusBarHeight: Dp, skip: () -> Unit) {
+fun HeaderOnboardingScreen(
+    context: Context,
+    lang: LocalizationDataStore,
+    statusBarHeight: Dp,
+    skip: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -33,12 +40,15 @@ fun HeaderOnboardingScreen(statusBarHeight: Dp, skip: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.size(size = 45.dp))
-        ButtonSkipView(clicked = skip)
+        ButtonSkipView(
+            text = context.resource(lang).getString(R.string.skip),
+            clicked = skip
+        )
     }
 }
 
 @Composable
-private fun ButtonSkipView(clicked: () -> Unit = {}) {
+private fun ButtonSkipView(text: String, clicked: () -> Unit = {}) {
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -59,7 +69,7 @@ private fun ButtonSkipView(clicked: () -> Unit = {}) {
             }
     ) {
         Text(
-            text = stringResource(id = R.string.skip),
+            text = text,
             fontSize = 13.sp,
             color = colorResource(id = R.color.black),
             fontWeight = FontWeight.Normal

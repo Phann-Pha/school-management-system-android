@@ -3,7 +3,6 @@ package com.domain.visor.school.kh.features.onboard.presentation.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -18,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.auth.presentation.view.LoginScreenActivity
 import com.domain.visor.school.kh.features.onboard.presentation.components.cards.CardItemOnboardingScreen
 import com.domain.visor.school.kh.features.onboard.presentation.components.footer.FooterOnboardingScreen
@@ -28,7 +28,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class OnboardingScreenActivity : ComponentActivity() {
+class OnboardingScreenActivity : BaseComponentActivity() {
 
     companion object {
         private const val TAG = "OnboardingScreenActivity"
@@ -59,9 +59,12 @@ class OnboardingScreenActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
-                        HeaderOnboardingScreen(statusBarHeight = padding.calculateTopPadding(), skip = {
-                            onSkip()
-                        })
+                        HeaderOnboardingScreen(
+                            context = activity,
+                            lang = lang,
+                            statusBarHeight = padding.calculateTopPadding(),
+                            skip = { onSkip() }
+                        )
                         HorizontalPager(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -69,7 +72,15 @@ class OnboardingScreenActivity : ComponentActivity() {
                                 .background(color = colorResource(id = R.color.white)),
                             state = state,
                             userScrollEnabled = false
-                        ) { page -> CardItemOnboardingScreen(item = items[page], state = state, page = page) }
+                        ) { page ->
+                            CardItemOnboardingScreen(
+                                context = activity,
+                                lang = lang,
+                                item = items[page],
+                                state = state,
+                                page = page
+                            )
+                        }
                         FooterOnboardingScreen(
                             navigateBottomHeight = padding.calculateBottomPadding(),
                             state = state,

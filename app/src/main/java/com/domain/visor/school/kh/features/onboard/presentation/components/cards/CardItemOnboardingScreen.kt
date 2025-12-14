@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.cards
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,17 +16,24 @@ import androidx.compose.ui.graphics.GraphicsLayerScope
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
+import com.domain.visor.school.kh.localization.LocalizationDataStore
+import com.domain.visor.school.kh.localization.resource
 import kotlin.math.absoluteValue
 
 @Composable
-internal fun CardItemOnboardingScreen(item: DataOnboardingModel, state: PagerState, page: Int) {
+internal fun CardItemOnboardingScreen(
+    context: Context,
+    lang: LocalizationDataStore,
+    item: DataOnboardingModel,
+    state: PagerState,
+    page: Int
+) {
     val pageOffset = ((state.currentPage - page) + state.currentPageOffsetFraction)
 
     Card(
@@ -66,7 +74,7 @@ internal fun CardItemOnboardingScreen(item: DataOnboardingModel, state: PagerSta
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
-                    text = stringResource(id = item.description)
+                    text = context.resource(lang).getString(item.description)
                 )
             }
         }
