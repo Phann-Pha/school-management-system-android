@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -13,10 +14,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
+import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
 
 @Composable
-fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) {
+fun FooterSelectingLanguageScreen(
+    navigateBottomHeight: Dp,
+    language: MutableState<LanguageStatus>,
+    clicked: (LanguageStatus) -> Unit = {}
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -54,7 +60,7 @@ fun FooterSelectingLanguageScreen(navigateBottomHeight: Dp, clicked: () -> Unit 
                 )
 
                 Spacer(modifier = Modifier.height(height = 24.dp))
-                SelectingLanguageButton(clicked = clicked)
+                SelectingLanguageButton(selected = language, clicked = clicked)
             }
         }
     }
