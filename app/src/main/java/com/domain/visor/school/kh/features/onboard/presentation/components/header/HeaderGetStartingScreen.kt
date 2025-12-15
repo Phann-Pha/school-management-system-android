@@ -42,7 +42,7 @@ fun HeaderGetStartingScreen(
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
             .padding(start = 12.dp, end = 24.dp, top = statusBarHeight)
-            .padding(top = 12.dp),
+            .padding(top = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {

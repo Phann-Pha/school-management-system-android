@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
@@ -39,23 +39,14 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
     private lateinit var activity: Activity
     private val viewmodel: SelectingLanguageScreenViewModel by viewModels()
 
-    private var default = ""
-
-    override fun onStart() {
-        super.onStart()
-        lifecycleScope.launch {
-            lang.value.collect { value ->
-                default = value.orEmpty()
-            }
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         activity = this@SelectingLanguageScreenActivity
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        onChangeIconStatusBarColor(light = true)
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
+
+                val default = lang.value.collectAsStateWithLifecycle(null).value
 
                 val language = remember {
                     mutableStateOf(

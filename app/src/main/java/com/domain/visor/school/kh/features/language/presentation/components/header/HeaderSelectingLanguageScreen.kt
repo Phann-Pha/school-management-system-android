@@ -34,7 +34,7 @@ fun HeaderSelectingLanguageScreen(statusBarHeight: Dp, backed: () -> Unit) {
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
             .padding(start = 12.dp, end = 24.dp, top = statusBarHeight)
-            .padding(top = 12.dp),
+            .padding(top = 4.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
