@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.domain.visor.school.datastore.LanguageSettingManager
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
@@ -25,7 +26,6 @@ import com.domain.visor.school.kh.features.language.presentation.components.foot
 import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
 import com.domain.visor.school.kh.features.onboard.presentation.view.GetStartingScreenActivity
-import com.domain.visor.school.kh.localization.LocalState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -47,12 +47,11 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
 
                 val default = lang.value.collectAsStateWithLifecycle(null).value
-
                 val language = remember {
                     mutableStateOf(
                         value = when (default) {
-                            LocalState.ENG.value -> LanguageStatus.ENGLISH
-                            LocalState.KH.value -> LanguageStatus.KHMER
+                            lang.en -> LanguageStatus.ENGLISH
+                            lang.en -> LanguageStatus.KHMER
                             else -> LanguageStatus.ENGLISH
                         }
                     )
@@ -86,7 +85,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             language = language
                         ) { status ->
                             language.value = status
-                            onLanguageSelected(status = status) {
+                            onLanguageSelected(lang = lang, status = status) {
                                 startActivity(GetStartingScreenActivity.onInstance(activity = activity))
                             }
                         }
@@ -96,15 +95,15 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         }
     }
 
-    private fun onLanguageSelected(status: LanguageStatus, callback: () -> Unit) {
+    private fun onLanguageSelected(lang: LanguageSettingManager, status: LanguageStatus, callback: () -> Unit) {
         when (status) {
             LanguageStatus.ENGLISH -> {
-                lifecycleScope.launch { lang.update(value = LocalState.ENG.value) }
+                lifecycleScope.launch { lang.update(value = lang.en) }
                 callback.invoke()
             }
 
             LanguageStatus.KHMER -> {
-                lifecycleScope.launch { lang.update(value = LocalState.KH.value) }
+                lifecycleScope.launch { lang.update(value = lang.km) }
                 callback.invoke()
             }
         }

@@ -23,7 +23,7 @@ import androidx.compose.ui.util.lerp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
 import com.domain.visor.school.datastore.LanguageSettingManager
-import com.domain.visor.school.kh.localization.utils.resource
+import com.domain.visor.school.kh.share.resource
 import kotlin.math.absoluteValue
 
 @Composable

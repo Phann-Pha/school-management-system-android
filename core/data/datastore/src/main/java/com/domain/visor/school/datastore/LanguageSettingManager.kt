@@ -14,10 +14,10 @@ class LanguageSettingManager(private val context: Context) {
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "local_language")
         private val key = stringPreferencesKey(name = "language")
-
-        private const val EN = "en-US"
-        private const val KH = "km"
     }
+
+    val en = "en-US"
+    val km = "km"
 
     val value: Flow<String?> = context.dataStore.data.map { preferences ->
         preferences[key] ?: EN

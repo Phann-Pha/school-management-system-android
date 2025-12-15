@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.datastore.LanguageSettingManager
-import com.domain.visor.school.kh.localization.utils.resource
+import com.domain.visor.school.kh.share.resource
 
 @Composable
 fun HeaderGetStartingScreen(

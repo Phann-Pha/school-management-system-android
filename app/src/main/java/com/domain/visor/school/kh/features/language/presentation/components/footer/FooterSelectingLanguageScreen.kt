@@ -17,7 +17,7 @@ import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
 import com.domain.visor.school.datastore.LanguageSettingManager
-import com.domain.visor.school.kh.localization.utils.resource
+import com.domain.visor.school.kh.share.resource
 
 @Composable
 fun FooterSelectingLanguageScreen(
