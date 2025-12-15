@@ -2,7 +2,6 @@ package com.domain.visor.school.kh.base
 
 import android.content.Context
 import android.content.res.Resources
-import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
@@ -17,10 +16,6 @@ import java.util.*
 open class BaseComponentActivity : ComponentActivity(), BaseComponentService {
 
     protected val lang: LocalizationDataStore by lazy { LocalizationDataStore(context = this) }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     @Composable
     override fun Context.resource(lang: LocalizationDataStore): Resources {
