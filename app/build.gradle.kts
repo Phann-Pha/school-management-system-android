@@ -44,6 +44,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:data:datastore"))
+
     implementation(project(":core:network-client:core-executor"))
     implementation(project(":core:network-client:retrofit-client"))
 
@@ -56,7 +58,6 @@ dependencies {
     implementation(libs.bundles.androidx.compose.ui.tools)
     implementation(libs.androidx.material3)
 
-    // testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,14 +66,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // dagger hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    implementation(libs.gson)
-    implementation(libs.androidx.datastore.preferences) // datastore preferences
-
-    // live data
     implementation("androidx.compose.runtime:runtime-livedata:1.7.8")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 }

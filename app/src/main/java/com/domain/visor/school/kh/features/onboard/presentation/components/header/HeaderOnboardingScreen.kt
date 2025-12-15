@@ -19,13 +19,13 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
+import com.domain.visor.school.datastore.LanguageSettingManager
 import com.domain.visor.school.kh.localization.utils.resource
 
 @Composable
 fun HeaderOnboardingScreen(
     context: Context,
-    lang: LocalizationDataStore,
+    lang: LanguageSettingManager,
     statusBarHeight: Dp,
     skip: () -> Unit
 ) {

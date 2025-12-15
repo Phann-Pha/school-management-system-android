@@ -14,13 +14,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
-import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
+import com.domain.visor.school.datastore.LanguageSettingManager
 import com.domain.visor.school.kh.localization.utils.resource
 
 @Composable
 fun FooterGetStartingScreen(
     context: Context,
-    lang: LocalizationDataStore,
+    lang: LanguageSettingManager,
     navigateBottomHeight: Dp,
     clicked: () -> Unit = {}
 ) {

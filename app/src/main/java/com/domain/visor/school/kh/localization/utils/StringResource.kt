@@ -5,11 +5,11 @@ import android.content.res.Resources
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.domain.visor.school.kh.localization.LocalState
-import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
+import com.domain.visor.school.datastore.LanguageSettingManager
 import java.util.Locale
 
 @Composable
-fun Context.resource(lang: LocalizationDataStore): Resources {
+fun Context.resource(lang: LanguageSettingManager): Resources {
     val tag = lang.value.collectAsStateWithLifecycle(initialValue = LocalState.ENG.value).value
     val local = Locale(tag ?: LocalState.ENG.value)
     Locale.setDefault(local)

@@ -8,17 +8,17 @@ import androidx.compose.runtime.Composable
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.domain.visor.school.kh.localization.LocalState
-import com.domain.visor.school.kh.localization.manager.LocalizationDataStore
+import com.domain.visor.school.datastore.LanguageSettingManager
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
 open class BaseComponentActivity : ComponentActivity(), BaseComponentService {
 
-    protected val lang: LocalizationDataStore by lazy { LocalizationDataStore(context = this) }
+    protected val lang: LanguageSettingManager by lazy { LanguageSettingManager(context = this) }
 
     @Composable
-    override fun Context.resource(lang: LocalizationDataStore): Resources {
+    override fun Context.resource(lang: LanguageSettingManager): Resources {
         val tag = lang.value.collectAsStateWithLifecycle(initialValue = LocalState.ENG.value).value
         val local = Locale(tag ?: LocalState.ENG.value)
         Locale.setDefault(local)

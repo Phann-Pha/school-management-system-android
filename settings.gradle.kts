@@ -34,3 +34,10 @@ module(
         "network-client:core-executor",
     )
 )
+
+module(
+    dir = "core",
+    modules = listOf(
+        "data:datastore",
+    )
+)
