@@ -12,7 +12,7 @@ interface BaseComponentService {
     fun Context.resource(lang: LocalizationDataStore): Resources
 
     /** This function used for change icon status bar color.
-     * @param isLightStatusBars if true icon status bar will be white else to gray
+     * @param light if true icon status bar will be white else to gray
      * */
-    fun onChangeIconStatusBarColor(isLightStatusBars: Boolean)
+    fun onChangeIconStatusBarColor(light: Boolean)
 }

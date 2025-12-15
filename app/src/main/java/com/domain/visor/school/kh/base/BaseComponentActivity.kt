@@ -32,10 +32,9 @@ open class BaseComponentActivity : ComponentActivity(), BaseComponentService {
         return createConfigurationContext(config).resources
     }
 
-    override fun onChangeIconStatusBarColor(isLightStatusBars: Boolean) {
+    override fun onChangeIconStatusBarColor(light: Boolean) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        WindowCompat.getInsetsController(window, window.decorView).apply {
-            isAppearanceLightStatusBars = isLightStatusBars
-        }
+        WindowCompat.getInsetsController(window, window.decorView)
+            .apply { isAppearanceLightStatusBars = light }
     }
 }
