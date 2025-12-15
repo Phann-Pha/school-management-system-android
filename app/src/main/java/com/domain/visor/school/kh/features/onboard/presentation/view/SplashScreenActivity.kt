@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,7 +31,6 @@ import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.language.presentation.view.SelectingLanguageScreenActivity
 import com.domain.visor.school.kh.features.onboard.presentation.viewmodel.SplashScreenViewModel
-import com.domain.visor.school.kh.share.resource
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : BaseComponentActivity() {
@@ -68,7 +68,7 @@ class SplashScreenActivity : BaseComponentActivity() {
                             contentDescription = null
                         )
                         Text(
-                            text = activity.resource(lang).getString(R.string.app_version),
+                            text =  stringResource(id = R.string.app_version),
                             fontSize = 13.sp,
                             color = colorResource(id = R.color.black),
                             fontWeight = FontWeight.Normal
@@ -82,16 +82,12 @@ class SplashScreenActivity : BaseComponentActivity() {
     }
     
     private fun onSyncDataInfo() {
-        viewmodel.onAsyncDataInfo(lang = lang)
+        viewmodel.onAsyncDataInfo(activity = activity, lang = lang)
     }
     
     private fun onObservableViewModel() {
         viewmodel.uiState.observe(this) {
-            startActivity(SelectingLanguageScreenActivity.onNewInstance(
-                activity = activity,
-                lang = it
-                )
-            )
+            startActivity(SelectingLanguageScreenActivity.onNewInstance(activity = activity, lang = it))
             activity.finish()
         }
     }

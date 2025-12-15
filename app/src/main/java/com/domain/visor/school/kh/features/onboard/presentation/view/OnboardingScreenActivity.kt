@@ -7,7 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
@@ -60,12 +65,9 @@ class OnboardingScreenActivity : BaseComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
-                        HeaderOnboardingScreen(
-                            context = activity,
-                            lang = lang,
-                            statusBarHeight = padding.calculateTopPadding(),
-                            skip = { onSkip() }
-                        )
+                        HeaderOnboardingScreen(top = padding.calculateTopPadding()){
+                            onSkip()
+                        }
                         HorizontalPager(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -75,8 +77,6 @@ class OnboardingScreenActivity : BaseComponentActivity() {
                             userScrollEnabled = false
                         ) { page ->
                             CardItemOnboardingScreen(
-                                context = activity,
-                                lang = lang,
                                 item = items[page],
                                 state = state,
                                 page = page

@@ -8,7 +8,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,12 +51,7 @@ class GetStartingScreenActivity : BaseComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    HeaderGetStartingScreen(
-                        context = activity,
-                        lang = lang,
-                        statusBarHeight = padding.calculateTopPadding(),
-                        backed = { finish() },
-                        skip = { finish() })
+                    HeaderGetStartingScreen(top = padding.calculateTopPadding(), backed = { finish() }, skip = { finish() })
                     Image(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -61,11 +60,7 @@ class GetStartingScreenActivity : BaseComponentActivity() {
                         painter = painterResource(id = R.drawable.image_get_starting),
                         contentDescription = null
                     )
-                    FooterGetStartingScreen(
-                        context = activity,
-                        lang = lang,
-                        navigateBottomHeight = padding.calculateBottomPadding()
-                    ) {
+                    FooterGetStartingScreen(bottom = padding.calculateBottomPadding()) {
                         startActivity(OnboardingScreenActivity.onNewInstance(activity = activity))
                         finish()
                     }

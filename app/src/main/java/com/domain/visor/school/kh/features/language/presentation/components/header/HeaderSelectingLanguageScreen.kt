@@ -4,7 +4,17 @@ import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -27,13 +37,13 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderSelectingLanguageScreen(statusBarHeight: Dp, backed: () -> Unit) {
+fun HeaderSelectingLanguageScreen(top: Dp, backed: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
-            .padding(start = 12.dp, end = 24.dp, top = statusBarHeight)
+            .padding(start = 12.dp, end = 24.dp, top = top)
             .padding(top = 4.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally

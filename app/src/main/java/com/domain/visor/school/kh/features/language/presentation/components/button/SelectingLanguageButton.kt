@@ -1,9 +1,15 @@
 package com.domain.visor.school.kh.features.language.presentation.components.button
 
-import android.content.Context
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -17,23 +23,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.domain.visor.school.datastore.LanguageSettingManager
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.share.resource
 
 @Composable
 fun SelectingLanguageButton(
-    context: Context,
-    lang: LanguageSettingManager,
     selected: MutableState<String>,
     clicked: (String) -> Unit = {}
 ) {
 
-    val khmer = remember { mutableStateOf(value = selected.value == lang.km) }
-    val english = remember { mutableStateOf(value = selected.value == lang.en) }
+    val khmer = remember { mutableStateOf(value = selected.value == "km") }
+    val english = remember { mutableStateOf(value = selected.value == "en-US") }
 
     Column(
         modifier = Modifier
@@ -43,22 +46,22 @@ fun SelectingLanguageButton(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ButtonKhmer(
-            text = context.resource(lang).getString(R.string.khmer),
+            text = stringResource(id = R.string.khmer) ,
             state = khmer,
             clicked = {
                 khmer.value = true
                 english.value = false
-                clicked.invoke(lang.km)
+                clicked.invoke("km")
             }
         )
         Spacer(modifier = Modifier.height(height = 8.dp))
         ButtonEnglish(
-            text = context.resource(lang).getString(R.string.english),
+            text = stringResource(id = R.string.english),
             state = english,
             clicked = {
                 khmer.value = false
                 english.value = true
-                clicked.invoke(lang.en)
+                clicked.invoke("en-US")
             }
         )
     }

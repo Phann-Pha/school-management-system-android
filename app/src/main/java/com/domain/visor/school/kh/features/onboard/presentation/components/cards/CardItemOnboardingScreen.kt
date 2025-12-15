@@ -1,9 +1,15 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.cards
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -16,20 +22,17 @@ import androidx.compose.ui.graphics.GraphicsLayerScope
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
-import com.domain.visor.school.datastore.LanguageSettingManager
-import com.domain.visor.school.kh.share.resource
 import kotlin.math.absoluteValue
 
 @Composable
 internal fun CardItemOnboardingScreen(
-    context: Context,
-    lang: LanguageSettingManager,
     item: DataOnboardingModel,
     state: PagerState,
     page: Int
@@ -74,7 +77,7 @@ internal fun CardItemOnboardingScreen(
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
-                    text = context.resource(lang).getString(item.description)
+                    text = stringResource(id = item.description)
                 )
             }
         }

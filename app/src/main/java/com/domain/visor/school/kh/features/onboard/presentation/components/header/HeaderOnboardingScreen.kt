@@ -1,10 +1,17 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.header
 
-import android.content.Context
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -14,19 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.datastore.LanguageSettingManager
-import com.domain.visor.school.kh.share.resource
 
 @Composable
 fun HeaderOnboardingScreen(
-    context: Context,
-    lang: LanguageSettingManager,
-    statusBarHeight: Dp,
+    top: Dp,
     skip: () -> Unit
 ) {
     Row(
@@ -34,16 +38,13 @@ fun HeaderOnboardingScreen(
             .fillMaxWidth()
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
-            .padding(start = 12.dp, end = 24.dp, top = statusBarHeight)
+            .padding(start = 12.dp, end = 24.dp, top = top)
             .padding(top = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.size(size = 45.dp))
-        ButtonSkipView(
-            text = context.resource(lang).getString(R.string.skip),
-            clicked = skip
-        )
+        ButtonSkipView(text =  stringResource(id =R.string.skip), clicked = skip)
     }
 }
 

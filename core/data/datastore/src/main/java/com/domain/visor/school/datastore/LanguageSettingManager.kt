@@ -16,11 +16,8 @@ class LanguageSettingManager(private val context: Context) {
         private val key = stringPreferencesKey(name = "language")
     }
 
-    val en = "en-US"
-    val km = "km"
-
     val value: Flow<String?> = context.dataStore.data.map { preferences ->
-        preferences[key] ?: en
+        preferences[key] ?: "en-US"
     }
 
     suspend fun update(value: String) : Boolean {

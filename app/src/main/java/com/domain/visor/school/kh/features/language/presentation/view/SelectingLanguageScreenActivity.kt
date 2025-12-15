@@ -50,9 +50,9 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         onChangeIconStatusBarColor(light = true)
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                val raw = intent.extras?.getString(LANGUAGE) ?: lang.en
+                val raw = intent.extras?.getString(LANGUAGE) ?: "en-US"
                 val default = lang.value.collectAsStateWithLifecycle(initialValue = raw).value
-                val language = remember { mutableStateOf(value = default?: lang.en) }
+                val language = remember { mutableStateOf(value = default?: "en-US") }
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -63,10 +63,9 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
-                        HeaderSelectingLanguageScreen(
-                            statusBarHeight = padding.calculateTopPadding(),
-                            backed = { finish() }
-                        )
+                        HeaderSelectingLanguageScreen(top = padding.calculateTopPadding()) {
+                            finish()
+                        }
                         Image(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -75,12 +74,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
-                        FooterSelectingLanguageScreen(
-                            context = activity,
-                            lang = lang,
-                            navigateBottomHeight = padding.calculateBottomPadding(),
-                            language = language
-                        ) { status ->
+                        FooterSelectingLanguageScreen(bottom = padding.calculateBottomPadding(), language = language) { status ->
                             onSyncLanguage(status = status)
                         }
                     }

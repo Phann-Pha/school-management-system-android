@@ -1,27 +1,30 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.footer
 
-import android.content.Context
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
-import com.domain.visor.school.datastore.LanguageSettingManager
-import com.domain.visor.school.kh.share.resource
 
 @Composable
 fun FooterGetStartingScreen(
-    context: Context,
-    lang: LanguageSettingManager,
-    navigateBottomHeight: Dp,
+    bottom: Dp,
     clicked: () -> Unit = {}
 ) {
     Box(
@@ -29,7 +32,7 @@ fun FooterGetStartingScreen(
             .fillMaxWidth()
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
-            .padding(bottom = navigateBottomHeight)
+            .padding(bottom = bottom)
             .padding(bottom = 42.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -57,11 +60,11 @@ fun FooterGetStartingScreen(
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
                     softWrap = true,
-                    text = context.resource(lang).getString(R.string.description_get_starting)
+                    text = stringResource(id = R.string.description_get_starting)
                 )
                 Spacer(modifier = Modifier.height(height = 32.dp))
                 BoundTextButtonAnimation(
-                    text = context.resource(lang).getString(R.string.get_started),
+                    text =  stringResource(id =R.string.get_started),
                     clicked = clicked
                 )
             }
