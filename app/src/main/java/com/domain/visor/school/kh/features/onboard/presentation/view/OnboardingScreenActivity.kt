@@ -31,8 +31,9 @@ import kotlinx.coroutines.launch
 class OnboardingScreenActivity : BaseComponentActivity() {
 
     companion object {
-        private const val TAG = "OnboardingScreenActivity"
-        fun onInstance(activity: Activity) = Intent(activity, OnboardingScreenActivity::class.java)
+        fun onNewInstance(activity: Activity): Intent {
+            return Intent(activity, OnboardingScreenActivity::class.java)
+        }
     }
 
     private lateinit var activity: Activity

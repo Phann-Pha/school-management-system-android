@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -18,16 +19,20 @@ import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.onboard.presentation.components.footer.FooterGetStartingScreen
 import com.domain.visor.school.kh.features.onboard.presentation.components.header.HeaderGetStartingScreen
+import com.domain.visor.school.kh.features.onboard.presentation.viewmodel.GetStartingScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class GetStartingScreenActivity : BaseComponentActivity() {
+    
     companion object {
-        private const val TAG = "GetStartingActivity"
-        fun onInstance(activity: Activity) = Intent(activity, GetStartingScreenActivity::class.java)
+        fun onNewInstance(activity: Activity) : Intent {
+            return Intent(activity, GetStartingScreenActivity::class.java)
+        }
     }
 
     private lateinit var activity: Activity
+    private val viewmodel: GetStartingScreenViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         activity = this@GetStartingScreenActivity
@@ -52,7 +57,7 @@ class GetStartingScreenActivity : BaseComponentActivity() {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(height = 250.dp)
-                            .background(colorResource(id = R.color.white)),
+                            .background(color = colorResource(id = R.color.white)),
                         painter = painterResource(id = R.drawable.image_get_starting),
                         contentDescription = null
                     )
@@ -61,8 +66,7 @@ class GetStartingScreenActivity : BaseComponentActivity() {
                         lang = lang,
                         navigateBottomHeight = padding.calculateBottomPadding()
                     ) {
-                        // Handle clicked action
-                        startActivity(OnboardingScreenActivity.onInstance(activity = activity))
+                        startActivity(OnboardingScreenActivity.onNewInstance(activity = activity))
                         finish()
                     }
                 }

@@ -31,9 +31,11 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SelectingLanguageScreenActivity : BaseComponentActivity() {
+    
     companion object {
-        private const val TAG = "SelectingLanguageScreenActivity"
-        fun onNewInstance(activity: Activity) = Intent(activity, SelectingLanguageScreenActivity::class.java)
+        fun onNewInstance(activity: Activity) : Intent {
+            return Intent(activity, SelectingLanguageScreenActivity::class.java)
+        }
     }
 
     private lateinit var activity: Activity
@@ -74,7 +76,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(height = 250.dp)
-                                .background(colorResource(id = R.color.white)),
+                                .background(color = colorResource(id = R.color.white)),
                             painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
@@ -86,7 +88,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                         ) { status ->
                             language.value = status
                             onLanguageSelected(lang = lang, status = status) {
-                                startActivity(GetStartingScreenActivity.onInstance(activity = activity))
+                                startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))
                             }
                         }
                     }
