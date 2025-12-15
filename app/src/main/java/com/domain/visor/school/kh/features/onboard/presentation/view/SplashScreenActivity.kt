@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
+import com.domain.visor.school.kh.features.language.presentation.view.SelectingLanguageScreenActivity
 import com.domain.visor.school.kh.features.onboard.presentation.viewmodel.SplashScreenViewModel
 import com.domain.visor.school.kh.share.resource
 
@@ -75,6 +76,15 @@ class SplashScreenActivity : BaseComponentActivity() {
                     }
                 }
             }
+        }
+        
+        onObservableViewModel()
+    }
+    
+    private fun onObservableViewModel() {
+        viewmodel.uiState.observe(this) {
+            startActivity(SelectingLanguageScreenActivity.onNewInstance(activity = activity))
+            activity.finish()
         }
     }
 }
