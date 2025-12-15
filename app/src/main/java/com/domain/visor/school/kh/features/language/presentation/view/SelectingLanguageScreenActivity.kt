@@ -81,7 +81,6 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             navigateBottomHeight = padding.calculateBottomPadding(),
                             language = language
                         ) { status ->
-                            language.value = status
                             onSyncLanguage(status = status)
                         }
                     }
