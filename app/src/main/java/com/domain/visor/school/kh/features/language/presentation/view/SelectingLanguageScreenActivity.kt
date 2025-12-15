@@ -7,7 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,8 +22,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.lifecycleScope
-import com.domain.visor.school.datastore.LanguageSettingManager
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.language.domain.LanguageStatus
@@ -27,14 +30,15 @@ import com.domain.visor.school.kh.features.language.presentation.components.head
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
 import com.domain.visor.school.kh.features.onboard.presentation.view.GetStartingScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SelectingLanguageScreenActivity : BaseComponentActivity() {
     
     companion object {
-        fun onNewInstance(activity: Activity) : Intent {
+        private const val LANGUAGE = "language"
+        fun onNewInstance(activity: Activity, lang: String) : Intent {
             return Intent(activity, SelectingLanguageScreenActivity::class.java)
+                    .apply { putExtra(LANGUAGE, lang) }
         }
     }
 
@@ -47,8 +51,8 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         onChangeIconStatusBarColor(light = true)
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-
-                val default = lang.value.collectAsStateWithLifecycle(null).value
+                val raw = intent.extras?.getString(LANGUAGE) ?: lang.en
+                val default = lang.value.collectAsStateWithLifecycle(initialValue = raw).value
                 val language = remember {
                     mutableStateOf(
                         value = when (default) {
@@ -87,27 +91,24 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             language = language
                         ) { status ->
                             language.value = status
-                            onLanguageSelected(lang = lang, status = status) {
-                                startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))
-                            }
+                            onSyncLanguage(status = status)
                         }
                     }
                 }
             }
         }
+        
+        onObservableViewModel()
     }
-
-    private fun onLanguageSelected(lang: LanguageSettingManager, status: LanguageStatus, callback: () -> Unit) {
-        when (status) {
-            LanguageStatus.ENGLISH -> {
-                lifecycleScope.launch { lang.update(value = lang.en) }
-                callback.invoke()
-            }
-
-            LanguageStatus.KHMER -> {
-                lifecycleScope.launch { lang.update(value = lang.km) }
-                callback.invoke()
-            }
+    
+    private fun onSyncLanguage(status: LanguageStatus) {
+        viewmodel.onUpdateLanguage(lang = lang, status = status)
+    }
+    
+    private fun onObservableViewModel() {
+        viewmodel.uiState.observe(this) {
+            startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))
+            activity.finish()
         }
     }
 }

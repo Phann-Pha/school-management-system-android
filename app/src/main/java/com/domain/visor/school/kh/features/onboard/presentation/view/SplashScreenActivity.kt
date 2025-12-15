@@ -77,13 +77,21 @@ class SplashScreenActivity : BaseComponentActivity() {
                 }
             }
         }
-        
+        onSyncDataInfo()
         onObservableViewModel()
+    }
+    
+    private fun onSyncDataInfo() {
+        viewmodel.onAsyncDataInfo(lang = lang)
     }
     
     private fun onObservableViewModel() {
         viewmodel.uiState.observe(this) {
-            startActivity(SelectingLanguageScreenActivity.onNewInstance(activity = activity))
+            startActivity(SelectingLanguageScreenActivity.onNewInstance(
+                activity = activity,
+                lang = it
+                )
+            )
             activity.finish()
         }
     }
