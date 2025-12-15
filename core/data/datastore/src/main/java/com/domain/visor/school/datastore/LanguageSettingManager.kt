@@ -20,7 +20,7 @@ class LanguageSettingManager(private val context: Context) {
     val km = "km"
 
     val value: Flow<String?> = context.dataStore.data.map { preferences ->
-        preferences[key] ?: EN
+        preferences[key] ?: en
     }
 
     suspend fun update(value: String) {
