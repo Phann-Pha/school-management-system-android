@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
-import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
@@ -53,15 +52,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
                 val raw = intent.extras?.getString(LANGUAGE) ?: lang.en
                 val default = lang.value.collectAsStateWithLifecycle(initialValue = raw).value
-                val language = remember {
-                    mutableStateOf(
-                        value = when (default) {
-                            lang.en -> LanguageStatus.ENGLISH
-                            lang.en -> LanguageStatus.KHMER
-                            else -> LanguageStatus.ENGLISH
-                        }
-                    )
-                }
+                val language = remember { mutableStateOf(value = default?: lang.en) }
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -101,7 +92,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         onObservableViewModel()
     }
     
-    private fun onSyncLanguage(status: LanguageStatus) {
+    private fun onSyncLanguage(status: String) {
         viewmodel.onUpdateLanguage(lang = lang, status = status)
     }
     

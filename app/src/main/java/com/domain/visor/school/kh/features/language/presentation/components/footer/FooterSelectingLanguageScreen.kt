@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
 import com.domain.visor.school.datastore.LanguageSettingManager
 import com.domain.visor.school.kh.share.resource
@@ -24,8 +23,8 @@ fun FooterSelectingLanguageScreen(
     context: Context,
     lang: LanguageSettingManager,
     navigateBottomHeight: Dp,
-    language: MutableState<LanguageStatus>,
-    clicked: (LanguageStatus) -> Unit = {}
+    language: MutableState<String>,
+    clicked: (String) -> Unit = {}
 ) {
     Box(
         modifier = Modifier
