@@ -23,9 +23,10 @@ class LanguageSettingManager(private val context: Context) {
         preferences[key] ?: en
     }
 
-    suspend fun update(value: String) {
+    suspend fun update(value: String) : Boolean {
         context.dataStore.edit { preferences ->
             preferences[key] = value
         }
+        return true
     }
 }

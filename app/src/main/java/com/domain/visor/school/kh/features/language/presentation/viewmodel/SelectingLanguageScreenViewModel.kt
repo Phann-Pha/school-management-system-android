@@ -10,13 +10,12 @@ import kotlinx.coroutines.launch
 
 class SelectingLanguageScreenViewModel: ViewModel() {
     
-    private val _uiState:  MutableLiveData<String> = MutableLiveData()
-    val uiState: LiveData<String> = _uiState
+    private val _uiState:  MutableLiveData<Boolean> = MutableLiveData()
+    val uiState: LiveData<Boolean> = _uiState
     
     fun onUpdateLanguage(lang: LanguageSettingManager, status: String) {
         viewModelScope.launch {
-            lang.update(value = status)
-            _uiState.postValue(status)
+            _uiState.postValue(lang.update(value = status))
         }
     }
 
