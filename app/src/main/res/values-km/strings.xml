@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">VISOR</string>
+    <string name="app_version">១.០.០</string>
 
     <!--onboarding string-->
     <string name="description_onboard_1">តាមដានការចូលរួមភ្លាមៗជាមួយនឹងកំណត់ត្រាទាន់សម័យ គ្រប់ពេលវេលា គ្រប់ទីកន្លែង។</string>
