@@ -11,6 +11,7 @@ composeBom = "2025.09.00"
 
 appcompat = "1.7.1"
 material = "1.13.0"
+constraintlayoutCompose = "1.1.0"
 
 # Retrofit 2
 gson = "2.13.2"
@@ -50,6 +51,7 @@ androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 
 # meterialk ui
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }

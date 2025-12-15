@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
+    implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.bundles.androidx.compose.ui.tools)
     implementation(libs.androidx.material3)
 
@@ -70,4 +71,8 @@ dependencies {
 
     implementation(libs.gson)
     implementation(libs.androidx.datastore.preferences) // datastore preferences
+
+    // live data
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.8")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 }
