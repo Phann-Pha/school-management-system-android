@@ -14,13 +14,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.domain.visor.school.datastore.LanguageHelper
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
@@ -31,17 +34,19 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SelectingLanguageScreenActivity : BaseComponentActivity() {
-    
+
     companion object {
         private const val LANGUAGE = "language"
-        fun onNewInstance(activity: Activity, lang: String) : Intent {
+        fun onNewInstance(activity: Activity, lang: String): Intent {
             return Intent(activity, SelectingLanguageScreenActivity::class.java)
-                    .apply { putExtra(LANGUAGE, lang) }
+                .apply { putExtra(LANGUAGE, lang) }
         }
     }
 
     private lateinit var activity: Activity
     private val viewmodel: SelectingLanguageScreenViewModel by viewModels()
+
+    private val languageHelper by lazy { LanguageHelper() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         activity = this@SelectingLanguageScreenActivity
@@ -49,6 +54,15 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         onChangeIconStatusBarColor(light = true)
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
+
+                val currentLanguageCode: String = languageHelper.getLanguageCode(context = activity)
+                var currentLanguage: String by remember { mutableStateOf(value = currentLanguageCode) }
+
+                val onCurrentLanguageCode: (String) -> Unit = { code ->
+                    currentLanguage = code
+                    languageHelper.changeLanguage(context = applicationContext, languageCode = code)
+                }
+
                 val raw = intent.extras?.getString(LANGUAGE)
                 val language = remember { mutableStateOf(value = raw.orEmpty()) }
                 Box(
@@ -72,21 +86,24 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
-                        FooterSelectingLanguageScreen(bottom = padding.calculateBottomPadding(), language = language) { status ->
-                            onSyncLanguage(status = status)
+                        FooterSelectingLanguageScreen(
+                            bottom = padding.calculateBottomPadding(),
+                            language = language
+                        ) { status ->
+                            onCurrentLanguageCode.invoke(status)
                         }
                     }
                 }
             }
         }
-        
+
         onObservableViewModel()
     }
-    
+
     private fun onSyncLanguage(status: String) {
         viewmodel.onUpdateLanguage(status = status)
     }
-    
+
     private fun onObservableViewModel() {
         viewmodel.uiState.observe(this) {
             startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))

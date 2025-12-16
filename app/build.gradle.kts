@@ -40,6 +40,12 @@ android {
         jvmTarget = JvmTarget.JVM_17.target
     }
     buildToolsVersion = "35.0.0"
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
     androidResources {
         generateLocaleConfig = true
     }
@@ -74,7 +80,7 @@ dependencies {
 
     implementation("androidx.compose.runtime:runtime-livedata:1.7.8")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
-    
+
     // remember settings like share preference
     implementation("dev.burnoo:compose-remember-setting:1.0.3")
 }
