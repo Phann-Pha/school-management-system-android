@@ -40,6 +40,9 @@ android {
         jvmTarget = JvmTarget.JVM_17.target
     }
     buildToolsVersion = "35.0.0"
+    androidResources {
+        generateLocaleConfig = true
+    }
 }
 
 dependencies {
