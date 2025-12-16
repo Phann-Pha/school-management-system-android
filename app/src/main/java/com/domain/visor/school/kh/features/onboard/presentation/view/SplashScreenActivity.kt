@@ -88,6 +88,7 @@ class SplashScreenActivity : BaseComponentActivity() {
     private fun onObservableViewModel() {
         viewmodel.uiState.observe(this) {
             startActivity(SelectingLanguageScreenActivity.onNewInstance(activity = activity, lang = it))
+            activity.finish()
         }
     }
 }
