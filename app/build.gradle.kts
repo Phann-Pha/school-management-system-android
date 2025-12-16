@@ -71,4 +71,7 @@ dependencies {
 
     implementation("androidx.compose.runtime:runtime-livedata:1.7.8")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    
+    // remember settings like share preference
+    implementation("dev.burnoo:compose-remember-setting:1.0.3")
 }
