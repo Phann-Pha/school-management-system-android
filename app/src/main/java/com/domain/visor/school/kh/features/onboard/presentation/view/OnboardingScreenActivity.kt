@@ -7,12 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
@@ -75,13 +70,7 @@ class OnboardingScreenActivity : BaseComponentActivity() {
                                 .background(color = colorResource(id = R.color.white)),
                             state = state,
                             userScrollEnabled = false
-                        ) { page ->
-                            CardItemOnboardingScreen(
-                                item = items[page],
-                                state = state,
-                                page = page
-                            )
-                        }
+                        ) { page -> CardItemOnboardingScreen(item = items[page], state = state, page = page) }
                         FooterOnboardingScreen(
                             navigateBottomHeight = padding.calculateBottomPadding(),
                             state = state,
