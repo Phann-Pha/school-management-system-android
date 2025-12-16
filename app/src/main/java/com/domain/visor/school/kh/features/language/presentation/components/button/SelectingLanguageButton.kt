@@ -36,7 +36,7 @@ fun SelectingLanguageButton(
 ) {
 
     val khmer = remember { mutableStateOf(value = selected.value == "km") }
-    val english = remember { mutableStateOf(value = selected.value == "en-US") }
+    val english = remember { mutableStateOf(value = selected.value == "en") }
 
     Column(
         modifier = Modifier
@@ -46,7 +46,7 @@ fun SelectingLanguageButton(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ButtonKhmer(
-            text = stringResource(id = R.string.khmer) ,
+            text = stringResource(id = R.string.khmer),
             state = khmer,
             clicked = {
                 khmer.value = true
@@ -61,7 +61,7 @@ fun SelectingLanguageButton(
             clicked = {
                 khmer.value = false
                 english.value = true
-                clicked.invoke("en-US")
+                clicked.invoke("en")
             }
         )
     }
