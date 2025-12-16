@@ -31,7 +31,7 @@ class SplashScreenViewModel @Inject constructor() : ViewModel() {
     private fun configure(activity: Activity, tag: String) {
         val config = activity.resources.configuration
         val local = Locale(tag)
-        Locale.setDefault(local)
+        //Locale.setDefault(local)
         config.setLocale(local)
         activity.createConfigurationContext(config)
     }
