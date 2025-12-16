@@ -55,7 +55,7 @@ class GetStartingScreenActivity : BaseComponentActivity() {
                     Image(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(height = 250.dp)
+                            .height(height = 260.dp)
                             .background(color = colorResource(id = R.color.white)),
                         painter = painterResource(id = R.drawable.image_get_started),
                         contentDescription = null
