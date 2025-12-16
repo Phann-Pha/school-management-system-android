@@ -60,7 +60,7 @@ internal fun CardItemOnboardingScreen(
                 LottieAnimation(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(height = 250.dp),
+                        .height(height = 280.dp),
                     composition = animation
                 )
 
