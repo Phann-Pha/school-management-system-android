@@ -82,7 +82,7 @@ class SplashScreenActivity : BaseComponentActivity() {
     }
     
     private fun onSyncDataInfo() {
-        viewmodel.onAsyncDataInfo(activity = activity, lang = lang)
+        viewmodel.onAsyncDataInfo(activity = activity)
     }
     
     private fun onObservableViewModel() {

@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
@@ -50,9 +49,8 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         onChangeIconStatusBarColor(light = true)
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                val raw = intent.extras?.getString(LANGUAGE) ?: "en-US"
-                val default = lang.value.collectAsStateWithLifecycle(initialValue = raw).value
-                val language = remember { mutableStateOf(value = default?: "en-US") }
+                val raw = intent.extras?.getString(LANGUAGE)
+                val language = remember { mutableStateOf(value = raw.orEmpty()) }
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -86,7 +84,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
     }
     
     private fun onSyncLanguage(status: String) {
-        viewmodel.onUpdateLanguage(lang = lang, status = status)
+        viewmodel.onUpdateLanguage(status = status)
     }
     
     private fun onObservableViewModel() {

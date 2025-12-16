@@ -17,13 +17,12 @@ class LanguageSettingManager(private val context: Context) {
     }
 
     val value: Flow<String?> = context.dataStore.data.map { preferences ->
-        preferences[key] ?: "en-US"
+        preferences[key]
     }
 
-    suspend fun update(value: String) : Boolean {
+    suspend fun update(value: String) {
         context.dataStore.edit { preferences ->
             preferences[key] = value
         }
-        return true
     }
 }
