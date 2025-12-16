@@ -11,7 +11,8 @@ composeBom = "2025.09.00"
 
 appcompat = "1.7.1"
 material = "1.13.0"
-constraintlayoutCompose = "1.1.0"
+lottieCompose = "6.7.1"
+constraintlayoutCompose = "1.1.1"
 
 # Retrofit 2
 gson = "2.13.2"
@@ -20,6 +21,7 @@ retrofit = "3.0.0"
 converterGson = "3.0.0"
 
 # RxJava
+runtimeLivedata = "1.10.0"
 rxjava = "3.1.12"
 rxandroid = "3.0.2"
 adapterRxjava3 = "3.0.0"
@@ -29,12 +31,15 @@ hiltAndroid = "2.57.2"
 
 # share prefernce
 datastorePreferences = "1.2.0"
+composeRememberSetting = "1.0.3"
 
 [libraries]
 # core libs
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "runtimeLivedata" }
 
 # compose bom
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -56,6 +61,7 @@ androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constr
 # meterialk ui
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # retrofit2
@@ -74,6 +80,7 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 
 #share preference
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+compose-remember-setting = { module = "dev.burnoo:compose-remember-setting", version.ref = "composeRememberSetting" }
 [bundles]
 androidx-compose-ui-tools = ["androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling", "androidx-ui-tooling-preview"]
 

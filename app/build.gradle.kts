@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.bundles.androidx.compose.ui.tools)
     implementation(libs.androidx.material3)
 
+    implementation(libs.lottie.compose)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,12 +77,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // dagger-hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    implementation("androidx.compose.runtime:runtime-livedata:1.7.8")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    // live-date
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     // remember settings like share preference
-    implementation("dev.burnoo:compose-remember-setting:1.0.3")
+    implementation(libs.compose.remember.setting)
 }
