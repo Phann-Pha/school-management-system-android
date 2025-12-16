@@ -98,7 +98,6 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
     private fun onObservableViewModel() {
         viewmodel.uiState.observe(this) {
             startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))
-            activity.finish()
         }
     }
 }
