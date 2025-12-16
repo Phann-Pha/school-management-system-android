@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
@@ -61,7 +62,8 @@ internal fun CardItemOnboardingScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(height = 280.dp),
-                    composition = animation
+                    composition = animation,
+                    iterations = LottieConstants.IterateForever
                 )
 
                 Spacer(modifier = Modifier.height(height = 32.dp))
