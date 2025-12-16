@@ -60,11 +60,11 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
 
                 val onCurrentLanguageCode: (String) -> Unit = { code ->
                     currentLanguage = code
-                    languageHelper.changeLanguage(context = applicationContext, languageCode = code)
+                    languageHelper.changeLanguage(context = activity, languageCode = code)
+                    viewmodel.onUpdateLanguage(code = code)
                 }
 
-                val raw = intent.extras?.getString(LANGUAGE)
-                val language = remember { mutableStateOf(value = raw.orEmpty()) }
+                val language = remember { mutableStateOf(value = currentLanguage) }
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -75,9 +75,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
-                        HeaderSelectingLanguageScreen(top = padding.calculateTopPadding()) {
-                            finish()
-                        }
+                        HeaderSelectingLanguageScreen(top = padding.calculateTopPadding()) { finish() }
                         Image(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -86,10 +84,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
-                        FooterSelectingLanguageScreen(
-                            bottom = padding.calculateBottomPadding(),
-                            language = language
-                        ) { status ->
+                        FooterSelectingLanguageScreen(bottom = padding.calculateBottomPadding(), language = language) { status ->
                             onCurrentLanguageCode.invoke(status)
                         }
                     }
@@ -98,10 +93,6 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         }
 
         onObservableViewModel()
-    }
-
-    private fun onSyncLanguage(status: String) {
-        viewmodel.onUpdateLanguage(status = status)
     }
 
     private fun onObservableViewModel() {
