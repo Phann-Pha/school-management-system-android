@@ -9,11 +9,11 @@ class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository {
     override fun onAsyncOnboardingInfo(): List<DataOnboardingModel> {
         return listOf(
             DataOnboardingModel(
-                thumbnail = R.raw.listing_animation,
+                thumbnail = R.raw.analyze_animation,
                 description = R.string.description_onboard_1
             ),
             DataOnboardingModel(
-                thumbnail = R.raw.listing_animation,
+                thumbnail = R.raw.dashboard_animation,
                 description = R.string.description_onboard_2
             ),
             DataOnboardingModel(
