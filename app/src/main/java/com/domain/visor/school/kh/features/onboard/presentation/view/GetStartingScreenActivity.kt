@@ -57,7 +57,7 @@ class GetStartingScreenActivity : BaseComponentActivity() {
                             .fillMaxWidth()
                             .height(height = 250.dp)
                             .background(color = colorResource(id = R.color.white)),
-                        painter = painterResource(id = R.drawable.image_get_starting),
+                        painter = painterResource(id = R.drawable.image_get_started),
                         contentDescription = null
                     )
                     FooterGetStartingScreen(bottom = padding.calculateBottomPadding()) {
