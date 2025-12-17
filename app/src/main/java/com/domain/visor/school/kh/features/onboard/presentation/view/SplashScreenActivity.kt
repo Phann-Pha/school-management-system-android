@@ -67,10 +67,7 @@ class SplashScreenActivity : BaseComponentActivity()
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(
-                        top = padding.calculateTopPadding(),
-                        bottom = padding.calculateBottomPadding()
-                    ),
+                    .padding(top = padding.calculateTopPadding(), bottom = padding.calculateBottomPadding()),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
