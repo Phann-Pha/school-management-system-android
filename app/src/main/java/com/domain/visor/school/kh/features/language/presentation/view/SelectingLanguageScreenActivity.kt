@@ -7,12 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.domain.visor.school.datastore.LanguageHelper
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
@@ -33,38 +27,34 @@ import com.domain.visor.school.kh.features.onboard.presentation.view.GetStarting
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SelectingLanguageScreenActivity : BaseComponentActivity() {
+class SelectingLanguageScreenActivity : BaseComponentActivity()
+{
 
-    companion object {
+    companion object
+    {
         private const val LANGUAGE = "language"
-        fun onNewInstance(activity: Activity, lang: String): Intent {
-            return Intent(activity, SelectingLanguageScreenActivity::class.java)
-                .apply { putExtra(LANGUAGE, lang) }
+        fun onNewInstance(activity: Activity, lang: String): Intent
+        {
+            return Intent(activity, SelectingLanguageScreenActivity::class.java).apply { putExtra(LANGUAGE, lang) }
         }
     }
 
     private lateinit var activity: Activity
     private val viewmodel: SelectingLanguageScreenViewModel by viewModels()
 
-    private val languageHelper by lazy { LanguageHelper() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         activity = this@SelectingLanguageScreenActivity
         super.onCreate(savedInstanceState)
         onChangeIconStatusBarColor(light = true)
         setContent {
+
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
+                val code: String = viewmodel.onGetLanguageCode(context = activity)
+                var current: String by remember { mutableStateOf(value = code) }
+                val language = remember { mutableStateOf(value = current) }
 
-                val currentLanguageCode: String = languageHelper.getLanguageCode(context = activity)
-                var currentLanguage: String by remember { mutableStateOf(value = currentLanguageCode) }
-
-                val onCurrentLanguageCode: (String) -> Unit = { code ->
-                    currentLanguage = code
-                    languageHelper.changeLanguage(context = activity, languageCode = code)
-                    viewmodel.onUpdateLanguage(code = code)
-                }
-
-                val language = remember { mutableStateOf(value = currentLanguage) }
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -84,8 +74,9 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
                             painter = painterResource(id = R.drawable.onboard_3),
                             contentDescription = null
                         )
-                        FooterSelectingLanguageScreen(bottom = padding.calculateBottomPadding(), language = language) { status ->
-                            onCurrentLanguageCode.invoke(status)
+                        FooterSelectingLanguageScreen(bottom = padding.calculateBottomPadding(), language = language) {
+                            current = it
+                            onProcessLanguage(code = it)
                         }
                     }
                 }
@@ -95,9 +86,18 @@ class SelectingLanguageScreenActivity : BaseComponentActivity() {
         onObservableViewModel()
     }
 
-    private fun onObservableViewModel() {
-        viewmodel.uiState.observe(this) {
-            startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))
+    private fun onProcessLanguage(code: String)
+    {
+        viewmodel.onChangedLanguage(context = activity, code = code)
+    }
+
+    private fun onObservableViewModel()
+    {
+        viewmodel.onChangedLanguageState.observe(this) { state ->
+            if (state)
+            {
+                startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))
+            }
         }
     }
 }
