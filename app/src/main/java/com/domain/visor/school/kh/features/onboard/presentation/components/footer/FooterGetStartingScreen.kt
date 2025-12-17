@@ -23,10 +23,8 @@ import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
 
 @Composable
-fun FooterGetStartingScreen(
-    bottom: Dp,
-    clicked: () -> Unit = {}
-) {
+fun FooterGetStartingScreen(bottom: Dp, clicked: () -> Unit = {})
+{
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -64,7 +62,7 @@ fun FooterGetStartingScreen(
                 )
                 Spacer(modifier = Modifier.height(height = 32.dp))
                 BoundTextButtonAnimation(
-                    text =  stringResource(id =R.string.get_started),
+                    text = stringResource(id = R.string.get_started),
                     clicked = clicked
                 )
             }

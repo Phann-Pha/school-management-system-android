@@ -35,10 +35,8 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderGetStartingScreen(
-    top: Dp,
-    backed: () -> Unit, skip: () -> Unit
-) {
+fun HeaderGetStartingScreen(top: Dp, backed: () -> Unit, skip: () -> Unit)
+{
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,12 +48,13 @@ fun HeaderGetStartingScreen(
         verticalAlignment = Alignment.CenterVertically
     ) {
         ButtonBackView(clicked = backed)
-        ButtonSkipView(text =  stringResource(id = R.string.skip), clicked = skip)
+        ButtonSkipView(text = stringResource(id = R.string.skip), clicked = skip)
     }
 }
 
 @Composable
-private fun ButtonBackView(clicked: () -> Unit = {}) {
+private fun ButtonBackView(clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -68,13 +67,16 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
                 .size(size = 45.dp)
                 .scale(scale.value)
                 .pointerInteropFilter {
-                    when (it.action) {
-                        MotionEvent.ACTION_DOWN -> {
+                    when (it.action)
+                    {
+                        MotionEvent.ACTION_DOWN ->
+                        {
                             clicked.invoke()
                             selected.value = true
                         }
 
-                        MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP   ->
+                        {
                             selected.value = false
                         }
                     }; true
@@ -97,7 +99,8 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
 }
 
 @Composable
-private fun ButtonSkipView(text: String, clicked: () -> Unit = {}) {
+private fun ButtonSkipView(text: String, clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -105,13 +108,16 @@ private fun ButtonSkipView(text: String, clicked: () -> Unit = {}) {
             .scale(scale = scale.value)
             .wrapContentSize()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
                         clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true

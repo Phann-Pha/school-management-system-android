@@ -14,7 +14,8 @@ import com.domain.visor.school.kh.features.onboard.presentation.components.butto
 import com.domain.visor.school.kh.features.onboard.presentation.components.indicators.DotIndicatorOnboardingScreen
 
 @Composable
-fun FooterOnboardingScreen(navigateBottomHeight: Dp, state: PagerState, clicked: () -> Unit = {}) {
+fun FooterOnboardingScreen(navigateBottomHeight: Dp, state: PagerState, clicked: () -> Unit = {})
+{
     Box(
         modifier = Modifier
             .fillMaxWidth()

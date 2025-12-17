@@ -29,10 +29,8 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderOnboardingScreen(
-    top: Dp,
-    skip: () -> Unit
-) {
+fun HeaderOnboardingScreen(top: Dp, skip: () -> Unit)
+{
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,12 +42,13 @@ fun HeaderOnboardingScreen(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.size(size = 45.dp))
-        ButtonSkipView(text =  stringResource(id =R.string.skip), clicked = skip)
+        ButtonSkipView(text = stringResource(id = R.string.skip), clicked = skip)
     }
 }
 
 @Composable
-private fun ButtonSkipView(text: String, clicked: () -> Unit = {}) {
+private fun ButtonSkipView(text: String, clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -57,13 +56,16 @@ private fun ButtonSkipView(text: String, clicked: () -> Unit = {}) {
             .scale(scale.value)
             .wrapContentSize()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
                         clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true

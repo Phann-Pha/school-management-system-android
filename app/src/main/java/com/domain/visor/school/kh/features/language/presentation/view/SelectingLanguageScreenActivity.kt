@@ -29,7 +29,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SelectingLanguageScreenActivity : BaseComponentActivity()
 {
-
     companion object
     {
         private const val LANGUAGE = "language"
@@ -41,7 +40,6 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
 
     private lateinit var activity: Activity
     private val viewmodel: SelectingLanguageScreenViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?)
     {

@@ -28,16 +28,10 @@ import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingMo
 import kotlin.math.absoluteValue
 
 @Composable
-internal fun CardItemOnboardingScreen(
-    item: DataOnboardingModel,
-    state: PagerState,
-    page: Int
-) {
+internal fun CardItemOnboardingScreen(item: DataOnboardingModel, state: PagerState, page: Int)
+{
     val pageOffset = ((state.currentPage - page) + state.currentPageOffsetFraction)
-
-    val animation by rememberLottieComposition(
-        spec = LottieCompositionSpec.RawRes(resId = item.thumbnail)
-    )
+    val animation by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(resId = item.thumbnail))
 
     Card(
         colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.white)),
@@ -84,7 +78,8 @@ internal fun CardItemOnboardingScreen(
     }
 }
 
-private fun GraphicsLayerScope.calculation(pageOffset: Float) {
+private fun GraphicsLayerScope.calculation(pageOffset: Float)
+{
     val fraction = 1f - pageOffset.coerceIn(0f, 1f)
     lerp(start = 0.85f, stop = 1f, fraction = fraction).also { scale -> scaleX = scale; scaleY = scale }
     alpha = lerp(start = 0.5f, stop = 1f, fraction = fraction)

@@ -30,11 +30,8 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun SelectingLanguageButton(
-    selected: MutableState<String>,
-    clicked: (String) -> Unit = {}
-) {
-
+fun SelectingLanguageButton(selected: MutableState<String>, clicked: (String) -> Unit = {})
+{
     val khmer = remember { mutableStateOf(value = selected.value == "km") }
     val english = remember { mutableStateOf(value = selected.value == "en") }
 
@@ -68,7 +65,8 @@ fun SelectingLanguageButton(
 }
 
 @Composable
-private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: () -> Unit) {
+private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: () -> Unit)
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
 
@@ -86,13 +84,16 @@ private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: () 
             .fillMaxWidth()
             .wrapContentHeight()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
                         clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true
@@ -111,7 +112,8 @@ private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: () 
 }
 
 @Composable
-private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: () -> Unit) {
+private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: () -> Unit)
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
 
@@ -129,13 +131,16 @@ private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: (
             .fillMaxWidth()
             .wrapContentHeight()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
                         clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true

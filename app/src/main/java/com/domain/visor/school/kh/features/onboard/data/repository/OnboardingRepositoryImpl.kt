@@ -5,8 +5,10 @@ import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingMo
 import com.domain.visor.school.kh.features.onboard.domain.repository.OnboardingRepository
 import javax.inject.Inject
 
-class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository {
-    override fun onAsyncOnboardingInfo(): List<DataOnboardingModel> {
+class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository
+{
+    override fun onAsyncOnboardingInfo(): List<DataOnboardingModel>
+    {
         return listOf(
             DataOnboardingModel(
                 thumbnail = R.raw.analyze_animation,

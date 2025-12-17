@@ -13,7 +13,8 @@ import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun DotIndicatorOnboardingScreen(state: PagerState) {
+fun DotIndicatorOnboardingScreen(state: PagerState)
+{
     Row(
         modifier = Modifier
             .wrapContentHeight()

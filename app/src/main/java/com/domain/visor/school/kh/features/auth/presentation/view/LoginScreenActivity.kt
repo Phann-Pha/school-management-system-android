@@ -20,16 +20,21 @@ import com.domain.visor.school.kh.features.auth.presentation.viewmodel.LoginScre
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginScreenActivity : ComponentActivity() {
-    companion object {
-        private const val TAG = "LoginScreenActivity"
-        fun onNewInstance(activity: Activity) = Intent(activity, LoginScreenActivity::class.java)
+class LoginScreenActivity : ComponentActivity()
+{
+    companion object
+    {
+        fun onNewInstance(activity: Activity): Intent
+        {
+            return Intent(activity, LoginScreenActivity::class.java)
+        }
     }
 
     private lateinit var activity: Activity
     private val viewmodel: LoginScreenViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         activity = this@LoginScreenActivity
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

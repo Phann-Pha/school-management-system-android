@@ -37,7 +37,8 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderSelectingLanguageScreen(top: Dp, backed: () -> Unit) {
+fun HeaderSelectingLanguageScreen(top: Dp, backed: () -> Unit)
+{
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -68,7 +69,8 @@ fun HeaderSelectingLanguageScreen(top: Dp, backed: () -> Unit) {
 }
 
 @Composable
-private fun ButtonBackView(clicked: () -> Unit = {}) {
+private fun ButtonBackView(clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -81,13 +83,16 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
                 .size(size = 45.dp)
                 .scale(scale.value)
                 .pointerInteropFilter {
-                    when (it.action) {
-                        MotionEvent.ACTION_DOWN -> {
+                    when (it.action)
+                    {
+                        MotionEvent.ACTION_DOWN ->
+                        {
                             clicked.invoke()
                             selected.value = true
                         }
 
-                        MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP   ->
+                        {
                             selected.value = false
                         }
                     }; true
