@@ -4,26 +4,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class SplashScreenViewModel @Inject constructor() : ViewModel() {
-    
-    private val _uiState:  MutableLiveData<String> = MutableLiveData()
-    val uiState: LiveData<String> = _uiState
-    
-    fun onAsyncDataInfo() {
+class SplashScreenViewModel : ViewModel()
+{
+    private val _onLoadingAnimationState: MutableLiveData<Boolean> = MutableLiveData()
+    val onLoadingAnimationState: LiveData<Boolean> = _onLoadingAnimationState
+
+    private val _onAsyncDataInfoState: MutableLiveData<String> = MutableLiveData()
+    val onAsyncDataInfoState: LiveData<String> = _onAsyncDataInfoState
+
+    fun onAsyncDataInfo()
+    {
+        _onLoadingAnimationState.postValue(true)
         viewModelScope.launch {
-            delay(timeMillis = 1000L)
-            _uiState.postValue("")
+            delay(timeMillis = 4000L)
+            _onLoadingAnimationState.postValue(false)
+            _onAsyncDataInfoState.postValue("some data")
         }
     }
-    
-    override fun onCleared() {
+
+    override fun onCleared()
+    {
         super.onCleared()
         viewModelScope.cancel()
     }

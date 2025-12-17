@@ -31,10 +31,9 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
 {
     companion object
     {
-        private const val LANGUAGE = "language"
-        fun onNewInstance(activity: Activity, lang: String): Intent
+        fun onNewInstance(activity: Activity): Intent
         {
-            return Intent(activity, SelectingLanguageScreenActivity::class.java).apply { putExtra(LANGUAGE, lang) }
+            return Intent(activity, SelectingLanguageScreenActivity::class.java)
         }
     }
 
