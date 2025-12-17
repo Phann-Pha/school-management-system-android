@@ -9,4 +9,5 @@
     <color name="disactive_dot_indicator">#F0EDEB</color>
 
     <color name="green_color">#70D65C</color>
+    <color name="blur_dark_background">#88000000</color>
 </resources>

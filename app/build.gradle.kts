@@ -60,6 +60,9 @@ dependencies {
 
     implementation(libs.lottie.compose)
 
+    implementation("dev.chrisbanes.haze:haze:1.7.1")
+    implementation("dev.chrisbanes.haze:haze-materials:1.7.1")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

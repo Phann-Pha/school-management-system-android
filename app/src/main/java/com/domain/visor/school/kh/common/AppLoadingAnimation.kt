@@ -1,22 +1,28 @@
 package com.domain.visor.school.kh.common
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.domain.visor.school.kh.R
+import dev.chrisbanes.haze.hazeEffect
+import dev.chrisbanes.haze.hazeSource
+import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
+import dev.chrisbanes.haze.materials.HazeMaterials
+import dev.chrisbanes.haze.rememberHazeState
 
+@OptIn(ExperimentalHazeMaterialsApi::class)
 @Composable
 fun AppLoadingAnimation(state: Boolean)
 {
+    val hazeState = rememberHazeState()
+
     if (state)
     {
         Dialog(
@@ -29,12 +35,25 @@ fun AppLoadingAnimation(state: Boolean)
             )
         ) {
             Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = Color(0x88000000)),
+                modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator(strokeWidth = 2.dp, color = colorResource(id = R.color.active_dot_indicator))
+                Box(
+                    modifier = Modifier
+                        .hazeSource(hazeState, zIndex = 1f)
+                        .hazeEffect(
+                            state = hazeState,
+                            style = HazeMaterials.thin(colorResource(id = R.color.blur_dark_background)),
+                        )
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center,
+                    propagateMinConstraints = false,
+                    content = {}
+                )
+                CircularProgressIndicator(
+                    strokeWidth = 2.5.dp,
+                    color = colorResource(id = R.color.active_dot_indicator)
+                )
             }
         }
     }
