@@ -77,6 +77,7 @@ class SplashScreenActivity : BaseComponentActivity() {
                 }
             }
         }
+
         onSyncDataInfo()
         onObservableViewModel()
     }

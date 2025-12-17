@@ -18,7 +18,7 @@ class SplashScreenViewModel @Inject constructor() : ViewModel() {
     
     fun onAsyncDataInfo() {
         viewModelScope.launch {
-            delay(timeMillis = 1500L)
+            delay(timeMillis = 1000L)
             _uiState.postValue("")
         }
     }
