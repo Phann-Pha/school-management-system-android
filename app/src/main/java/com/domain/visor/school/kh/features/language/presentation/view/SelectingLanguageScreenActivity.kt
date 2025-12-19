@@ -79,9 +79,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
             ) {
                 HeaderSelectingLanguageScreen(
                     top = padding.calculateTopPadding(),
-                    backed = {
-                        finish()
-                    }
+                    backed = { finish() }
                 )
                 Image(
                     modifier = Modifier
