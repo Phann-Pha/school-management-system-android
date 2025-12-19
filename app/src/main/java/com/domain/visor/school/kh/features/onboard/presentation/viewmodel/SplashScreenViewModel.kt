@@ -20,7 +20,7 @@ class SplashScreenViewModel : ViewModel()
     {
         _onLoadingAnimationState.postValue(true)
         viewModelScope.launch {
-            delay(timeMillis = 4000L)
+            delay(timeMillis = 3000L)
             _onLoadingAnimationState.postValue(false)
             _onAsyncDataInfoState.postValue("some data")
         }

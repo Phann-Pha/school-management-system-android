@@ -11,18 +11,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.domain.visor.school.kh.R
-import dev.chrisbanes.haze.hazeEffect
-import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
-import dev.chrisbanes.haze.materials.HazeMaterials
-import dev.chrisbanes.haze.rememberHazeState
 
 @OptIn(ExperimentalHazeMaterialsApi::class)
 @Composable
 fun AppLoadingAnimation(state: Boolean)
 {
-    val hazeState = rememberHazeState()
-
     if (state)
     {
         Dialog(
@@ -31,25 +25,13 @@ fun AppLoadingAnimation(state: Boolean)
                 usePlatformDefaultWidth = false,
                 dismissOnBackPress = false,
                 dismissOnClickOutside = false,
-                decorFitsSystemWindows = false // Ensure it covers the entire screen
+                decorFitsSystemWindows = false
             )
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Box(
-                    modifier = Modifier
-                        .hazeSource(hazeState, zIndex = 1f)
-                        .hazeEffect(
-                            state = hazeState,
-                            style = HazeMaterials.thin(colorResource(id = R.color.blur_dark_background)),
-                        )
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center,
-                    propagateMinConstraints = false,
-                    content = {}
-                )
                 CircularProgressIndicator(
                     strokeWidth = 2.5.dp,
                     color = colorResource(id = R.color.active_dot_indicator)
