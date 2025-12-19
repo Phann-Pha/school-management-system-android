@@ -55,7 +55,7 @@ class GetStartingScreenActivity : BaseComponentActivity()
     @Composable
     private fun body(padding: PaddingValues)
     {
-        val spec = LottieCompositionSpec.RawRes(resId = R.raw.boy_study_anim)
+        val spec = LottieCompositionSpec.RawRes(resId = R.raw.exam_anim)
         val animation by rememberLottieComposition(spec = spec)
         Box(modifier = Modifier.fillMaxSize()) {
             Column(

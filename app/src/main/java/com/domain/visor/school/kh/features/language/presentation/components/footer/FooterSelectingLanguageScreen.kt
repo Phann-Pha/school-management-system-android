@@ -32,14 +32,13 @@ fun FooterSelectingLanguageScreen(bottom: Dp, language: MutableState<String>, cl
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
             .padding(bottom = bottom)
-            .padding(bottom = 24.dp),
+            .padding(bottom = 26.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = colorResource(id = R.color.white))
-                .padding(bottom = 12.dp),
+                .background(color = colorResource(id = R.color.white)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
