@@ -45,7 +45,7 @@ fun BoundTextButtonAnimation(text: String, clicked: () -> Unit = {})
             modifier = Modifier
                 .scale(scale.value)
                 .fillMaxWidth()
-                .height(height = 45.dp)
+                .wrapContentHeight()
                 .pointerInteropFilter { event ->
                     when (event.action)
                     {
@@ -63,8 +63,11 @@ fun BoundTextButtonAnimation(text: String, clicked: () -> Unit = {})
                 }
         ) {
             Text(
+                modifier = Modifier
+                    .wrapContentSize()
+                    .padding(vertical = 8.dp),
                 text = text,
-                fontSize = 14.sp,
+                fontSize = 15.sp,
                 fontWeight = FontWeight.Normal,
                 color = colorResource(id = R.color.white)
             )

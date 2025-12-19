@@ -55,7 +55,7 @@ class GetStartingScreenActivity : BaseComponentActivity()
     @Composable
     private fun body(padding: PaddingValues)
     {
-        val spec = LottieCompositionSpec.RawRes(resId = R.raw.listing_animation)
+        val spec = LottieCompositionSpec.RawRes(resId = R.raw.boy_study_anim)
         val animation by rememberLottieComposition(spec = spec)
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
@@ -77,10 +77,13 @@ class GetStartingScreenActivity : BaseComponentActivity()
                     composition = animation,
                     iterations = LottieConstants.IterateForever
                 )
-                FooterGetStartingScreen(bottom = padding.calculateBottomPadding(), clicked = {
-                    startActivity(OnboardingScreenActivity.onNewInstance(activity = activity))
-                    finish()
-                })
+                FooterGetStartingScreen(
+                    bottom = padding.calculateBottomPadding(),
+                    clicked = {
+                        startActivity(OnboardingScreenActivity.onNewInstance(activity = activity))
+                        finish()
+                    }
+                )
             }
         }
     }

@@ -104,7 +104,7 @@ private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: () 
                 .wrapContentSize()
                 .padding(vertical = 8.dp),
             text = text,
-            fontSize = 14.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.Medium,
             color = colorResource(id = if (state.value) R.color.white else R.color.active_dot_indicator)
         )
@@ -151,7 +151,7 @@ private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: (
                 .wrapContentSize()
                 .padding(vertical = 8.dp),
             text = text,
-            fontSize = 14.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.Medium,
             color = colorResource(id = if (state.value) R.color.white else R.color.active_dot_indicator)
         )

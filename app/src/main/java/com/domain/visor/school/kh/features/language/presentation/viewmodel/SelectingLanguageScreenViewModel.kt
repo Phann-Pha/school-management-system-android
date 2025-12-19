@@ -29,7 +29,7 @@ class SelectingLanguageScreenViewModel : ViewModel()
     {
         _loadingState.postValue(true)
         viewModelScope.launch {
-            delay(1500L)
+            delay(1000L)
             languageHelper.changeLanguage(context, code)
             _loadingState.postValue(false)
             _changingState.postValue(true)

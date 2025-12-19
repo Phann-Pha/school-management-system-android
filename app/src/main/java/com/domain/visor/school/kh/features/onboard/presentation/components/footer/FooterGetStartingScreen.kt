@@ -60,7 +60,7 @@ fun FooterGetStartingScreen(bottom: Dp, clicked: () -> Unit = {})
                     softWrap = true,
                     text = stringResource(id = R.string.description_get_starting)
                 )
-                Spacer(modifier = Modifier.height(height = 32.dp))
+                Spacer(modifier = Modifier.height(height = 42.dp))
                 BoundTextButtonAnimation(
                     text = stringResource(id = R.string.get_started),
                     clicked = clicked
