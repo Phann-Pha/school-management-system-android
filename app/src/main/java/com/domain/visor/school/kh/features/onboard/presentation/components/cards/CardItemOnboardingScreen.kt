@@ -31,7 +31,8 @@ import kotlin.math.absoluteValue
 internal fun CardItemOnboardingScreen(item: DataOnboardingModel, state: PagerState, page: Int)
 {
     val pageOffset = ((state.currentPage - page) + state.currentPageOffsetFraction)
-    val animation by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(resId = item.thumbnail))
+    val spec = LottieCompositionSpec.RawRes(resId = R.raw.listing_animation)
+    val animation by rememberLottieComposition(spec = spec)
 
     Card(
         colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.white)),
