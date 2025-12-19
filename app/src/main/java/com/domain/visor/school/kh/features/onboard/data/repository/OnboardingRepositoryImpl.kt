@@ -15,7 +15,7 @@ class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository
                 description = R.string.description_onboard_1
             ),
             DataOnboardingModel(
-                thumbnail = R.raw.dashboard_animation,
+                thumbnail = R.raw.scanning_anim,
                 description = R.string.description_onboard_2
             ),
             DataOnboardingModel(
