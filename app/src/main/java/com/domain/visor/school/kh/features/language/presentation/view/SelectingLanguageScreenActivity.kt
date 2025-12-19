@@ -9,7 +9,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -20,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
+import com.domain.visor.school.kh.common.AppLoadingAnimation
 import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
 import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
@@ -46,41 +49,58 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
         super.onCreate(savedInstanceState)
         onChangeIconStatusBarColor(light = true)
         setContent {
-
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                val code: String = viewmodel.onGetLanguageCode(context = activity)
-                var current: String by remember { mutableStateOf(value = code) }
-                val language = remember { mutableStateOf(value = current) }
 
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(color = colorResource(id = R.color.white)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        HeaderSelectingLanguageScreen(top = padding.calculateTopPadding()) { finish() }
-                        Image(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(height = 250.dp)
-                                .background(color = colorResource(id = R.color.white)),
-                            painter = painterResource(id = R.drawable.onboard_3),
-                            contentDescription = null
-                        )
-                        FooterSelectingLanguageScreen(bottom = padding.calculateBottomPadding(), language = language) {
-                            current = it
-                            onProcessLanguage(code = it)
-                        }
-                    }
-                }
+                val loading = viewmodel.loadingState.observeAsState().value ?: false
+                AppLoadingAnimation(state = loading)
+                body(padding = padding)
             }
         }
 
         onObservableViewModel()
+    }
+
+    @Composable
+    private fun body(padding: PaddingValues)
+    {
+        val code: String = viewmodel.onGetLanguageCode(context = activity)
+        var current: String by remember { mutableStateOf(value = code) }
+        val language = remember { mutableStateOf(value = current) }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = colorResource(id = R.color.white)),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                HeaderSelectingLanguageScreen(
+                    top = padding.calculateTopPadding(),
+                    backed = {
+                        finish()
+                    }
+                )
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(height = 250.dp)
+                        .background(color = colorResource(id = R.color.white)),
+                    painter = painterResource(id = R.drawable.onboard_3),
+                    contentDescription = null
+                )
+                FooterSelectingLanguageScreen(
+                    bottom = padding.calculateBottomPadding(),
+                    language = language,
+                    clicked = { code ->
+                        current = code
+                        onProcessLanguage(code = code)
+                    }
+                )
+            }
+        }
     }
 
     private fun onProcessLanguage(code: String)
@@ -90,7 +110,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
 
     private fun onObservableViewModel()
     {
-        viewmodel.onChangedLanguageState.observe(this) { state ->
+        viewmodel.changingState.observe(this) { state ->
             if (state)
             {
                 startActivity(GetStartingScreenActivity.onNewInstance(activity = activity))

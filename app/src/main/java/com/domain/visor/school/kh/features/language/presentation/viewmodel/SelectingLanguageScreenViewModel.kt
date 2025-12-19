@@ -7,14 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.domain.visor.school.datastore.LanguageHelper
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SelectingLanguageScreenViewModel : ViewModel()
 {
     private val languageHelper by lazy { LanguageHelper() }
 
-    private val _onChangedLanguageState: MutableLiveData<Boolean> = MutableLiveData()
-    val onChangedLanguageState: LiveData<Boolean> = _onChangedLanguageState
+    private val _loadingState: MutableLiveData<Boolean> = MutableLiveData()
+    val loadingState: LiveData<Boolean> = _loadingState
+
+    private val _changingState: MutableLiveData<Boolean> = MutableLiveData()
+    val changingState: LiveData<Boolean> = _changingState
 
     fun onGetLanguageCode(context: Context): String
     {
@@ -23,10 +27,13 @@ class SelectingLanguageScreenViewModel : ViewModel()
 
     fun onChangedLanguage(context: Context, code: String)
     {
+        _loadingState.postValue(true)
         viewModelScope.launch {
+            delay(1500L)
             languageHelper.changeLanguage(context, code)
+            _loadingState.postValue(false)
+            _changingState.postValue(true)
         }
-        _onChangedLanguageState.value = true
     }
 
     override fun onCleared()
