@@ -16,4 +16,7 @@
     <string name="please_selecting_your_language">Please select your language</string>
     <string name="khmer">ភាសាខ្មែរ</string>
     <string name="english">English</string>
+
+    <string name="login">Login</string>
+    <string name="forget_password">Forget password</string>
 </resources>
