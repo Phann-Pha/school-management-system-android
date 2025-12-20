@@ -40,7 +40,7 @@ class SplashScreenActivity : BaseComponentActivity()
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                val loading = viewmodel.onLoadingAnimationState.observeAsState().value ?: false
+                val loading = viewmodel.loadingState.observeAsState(false).value
                 AppLoadingAnimation(state = loading)
                 body(padding = padding)
             }

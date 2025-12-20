@@ -10,18 +10,18 @@ import kotlinx.coroutines.launch
 
 class SplashScreenViewModel : ViewModel()
 {
-    private val _onLoadingAnimationState: MutableLiveData<Boolean> = MutableLiveData()
-    val onLoadingAnimationState: LiveData<Boolean> = _onLoadingAnimationState
+    private val _loadingState: MutableLiveData<Boolean> = MutableLiveData()
+    val loadingState: LiveData<Boolean> = _loadingState
 
     private val _onAsyncDataInfoState: MutableLiveData<String> = MutableLiveData()
     val onAsyncDataInfoState: LiveData<String> = _onAsyncDataInfoState
 
     fun onAsyncDataInfo()
     {
-        _onLoadingAnimationState.postValue(true)
+        _loadingState.postValue(true)
         viewModelScope.launch {
             delay(timeMillis = 1000L)
-            _onLoadingAnimationState.postValue(false)
+            _loadingState.postValue(false)
             _onAsyncDataInfoState.postValue("some data")
         }
     }
