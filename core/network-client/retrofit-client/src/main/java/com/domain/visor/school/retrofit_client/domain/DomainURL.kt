@@ -12,6 +12,6 @@ class DomainURL
     @Provides
     fun baseURL(): String
     {
-        return "https://api-school-local.tech-visor.com"
+        return "https://api-school-local.tech-visor.com/api/v1/"
     }
 }
