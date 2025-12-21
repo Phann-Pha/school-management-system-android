@@ -21,7 +21,8 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun BoundTextButtonAnimation(text: String, clicked: () -> Unit = {}) {
+fun BoundTextButtonAnimation(text: String, clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
 
@@ -44,23 +45,29 @@ fun BoundTextButtonAnimation(text: String, clicked: () -> Unit = {}) {
             modifier = Modifier
                 .scale(scale.value)
                 .fillMaxWidth()
-                .height(height = 45.dp)
+                .wrapContentHeight()
                 .pointerInteropFilter { event ->
-                    when (event.action) {
-                        MotionEvent.ACTION_DOWN -> {
+                    when (event.action)
+                    {
+                        MotionEvent.ACTION_DOWN ->
+                        {
                             clicked.invoke()
                             selected.value = true
                         }
 
-                        MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP   ->
+                        {
                             selected.value = false
                         }
                     }; true
                 }
         ) {
             Text(
+                modifier = Modifier
+                    .wrapContentSize()
+                    .padding(vertical = 8.dp),
                 text = text,
-                fontSize = 14.sp,
+                fontSize = 15.sp,
                 fontWeight = FontWeight.Normal,
                 color = colorResource(id = R.color.white)
             )

@@ -1,14 +1,12 @@
-package com.domain.visor.school.kh.features.language.presentation.components.header
+package com.domain.visor.school.kh.features.auth.presentation.components.header
 
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,46 +18,34 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderSelectingLanguageScreen(statusBarHeight: Dp, backed: () -> Unit) {
-    Column(
+fun HeaderLoginScreen(top: Dp, backed: () -> Unit)
+{
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .background(color = colorResource(id = R.color.white))
-            .padding(start = 12.dp, end = 24.dp, top = statusBarHeight)
-            .padding(top = 12.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight(),
-            horizontalArrangement = Arrangement.Start,
+                .wrapContentHeight()
+                .padding(start = 12.dp, end = 24.dp, top = top + 4.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             ButtonBackView(clicked = backed)
         }
-        Spacer(modifier = Modifier.height(height = 24.dp))
-        Text(
-            text = stringResource(id = R.string.texh_visor),
-            fontSize = 14.sp,
-            color = colorResource(id = R.color.green_color),
-            fontWeight = FontWeight.Normal
-        )
     }
 }
 
 @Composable
-private fun ButtonBackView(clicked: () -> Unit = {}) {
+private fun ButtonBackView(clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -72,13 +58,16 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
                 .size(size = 45.dp)
                 .scale(scale.value)
                 .pointerInteropFilter {
-                    when (it.action) {
-                        MotionEvent.ACTION_DOWN -> {
+                    when (it.action)
+                    {
+                        MotionEvent.ACTION_DOWN ->
+                        {
                             clicked.invoke()
                             selected.value = true
                         }
 
-                        MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP   ->
+                        {
                             selected.value = false
                         }
                     }; true

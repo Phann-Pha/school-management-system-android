@@ -2,7 +2,14 @@ package com.domain.visor.school.kh.features.language.presentation.components.but
 
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -21,13 +28,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
-import com.domain.visor.school.kh.features.language.domain.LanguageStatus
 
 @Composable
-fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (LanguageStatus) -> Unit = {}) {
-
-    val khmer = remember { mutableStateOf(value = selected.value == LanguageStatus.KHMER) }
-    val english = remember { mutableStateOf(value = selected.value == LanguageStatus.ENGLISH) }
+fun SelectingLanguageButton(selected: MutableState<String>, clicked: (String) -> Unit = {})
+{
+    val khmer = remember { mutableStateOf(value = selected.value == "km") }
+    val english = remember { mutableStateOf(value = selected.value == "en") }
 
     Column(
         modifier = Modifier
@@ -42,7 +48,7 @@ fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (La
             clicked = {
                 khmer.value = true
                 english.value = false
-                clicked.invoke(LanguageStatus.KHMER)
+                clicked.invoke("km")
             }
         )
         Spacer(modifier = Modifier.height(height = 8.dp))
@@ -52,14 +58,15 @@ fun SelectingLanguageButton(selected: MutableState<LanguageStatus>, clicked: (La
             clicked = {
                 khmer.value = false
                 english.value = true
-                clicked.invoke(LanguageStatus.ENGLISH)
+                clicked.invoke("en")
             }
         )
     }
 }
 
 @Composable
-private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: (LanguageStatus) -> Unit) {
+private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: () -> Unit)
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
 
@@ -77,13 +84,16 @@ private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: (La
             .fillMaxWidth()
             .wrapContentHeight()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        clicked.invoke(LanguageStatus.KHMER)
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
+                        clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true
@@ -94,7 +104,7 @@ private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: (La
                 .wrapContentSize()
                 .padding(vertical = 8.dp),
             text = text,
-            fontSize = 14.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.Medium,
             color = colorResource(id = if (state.value) R.color.white else R.color.active_dot_indicator)
         )
@@ -102,7 +112,8 @@ private fun ButtonKhmer(text: String, state: MutableState<Boolean>, clicked: (La
 }
 
 @Composable
-private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: (LanguageStatus) -> Unit) {
+private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: () -> Unit)
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.95f else 1f)
 
@@ -120,13 +131,16 @@ private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: (
             .fillMaxWidth()
             .wrapContentHeight()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        clicked.invoke(LanguageStatus.KHMER)
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
+                        clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true
@@ -137,7 +151,7 @@ private fun ButtonEnglish(text: String, state: MutableState<Boolean>, clicked: (
                 .wrapContentSize()
                 .padding(vertical = 8.dp),
             text = text,
-            fontSize = 14.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.Medium,
             color = colorResource(id = if (state.value) R.color.white else R.color.active_dot_indicator)
         )

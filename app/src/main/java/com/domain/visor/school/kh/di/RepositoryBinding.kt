@@ -9,7 +9,8 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-interface RepositoryBinding {
+interface RepositoryBinding
+{
     @Binds
     fun onBindOnboardingRepository(impl: OnboardingRepositoryImpl): OnboardingRepository
 }

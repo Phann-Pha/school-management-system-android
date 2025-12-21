@@ -1,7 +1,14 @@
 package com.domain.visor.school.kh.features.onboard.presentation.components.footer
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,13 +23,14 @@ import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.onboard.presentation.components.buttons.BoundTextButtonAnimation
 
 @Composable
-fun FooterGetStartingScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) {
+fun FooterGetStartingScreen(bottom: Dp, clicked: () -> Unit = {})
+{
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
-            .padding(bottom = navigateBottomHeight)
+            .padding(bottom = bottom)
             .padding(bottom = 42.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -52,8 +60,11 @@ fun FooterGetStartingScreen(navigateBottomHeight: Dp, clicked: () -> Unit = {}) 
                     softWrap = true,
                     text = stringResource(id = R.string.description_get_starting)
                 )
-                Spacer(modifier = Modifier.height(height = 32.dp))
-                BoundTextButtonAnimation(text = stringResource(id = R.string.get_started), clicked = clicked)
+                Spacer(modifier = Modifier.height(height = 42.dp))
+                BoundTextButtonAnimation(
+                    text = stringResource(id = R.string.get_started),
+                    clicked = clicked
+                )
             }
         }
     }

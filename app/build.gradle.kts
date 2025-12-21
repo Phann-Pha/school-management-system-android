@@ -44,6 +44,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:data:datastore"))
+
     implementation(project(":core:network-client:core-executor"))
     implementation(project(":core:network-client:retrofit-client"))
 
@@ -52,10 +54,15 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
+    implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.bundles.androidx.compose.ui.tools)
     implementation(libs.androidx.material3)
 
-    // testing
+    implementation(libs.lottie.compose)
+
+    implementation("dev.chrisbanes.haze:haze:1.7.1")
+    implementation("dev.chrisbanes.haze:haze-materials:1.7.1")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,10 +71,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // dagger hilt
+    // dagger-hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    implementation(libs.gson)
-    implementation(libs.androidx.datastore.preferences) // datastore preferences
+    // live-date
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    // remember settings like share preference
+    implementation(libs.compose.remember.setting)
 }

@@ -4,7 +4,14 @@ import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -28,24 +35,26 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderGetStartingScreen(statusBarHeight: Dp, backed: () -> Unit, skip: () -> Unit) {
+fun HeaderGetStartingScreen(top: Dp, backed: () -> Unit, skip: () -> Unit)
+{
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .background(color = colorResource(id = R.color.white))
-            .padding(start = 12.dp, end = 24.dp, top = statusBarHeight)
-            .padding(top = 12.dp),
+            .padding(start = 12.dp, end = 24.dp, top = top)
+            .padding(top = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         ButtonBackView(clicked = backed)
-        ButtonSkipView(clicked = skip)
+        ButtonSkipView(text = stringResource(id = R.string.skip), clicked = skip)
     }
 }
 
 @Composable
-private fun ButtonBackView(clicked: () -> Unit = {}) {
+private fun ButtonBackView(clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
@@ -58,16 +67,19 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
                 .size(size = 45.dp)
                 .scale(scale.value)
                 .pointerInteropFilter {
-                    when (it.action) {
-                        MotionEvent.ACTION_DOWN -> {
+                    when (it.action)
+                    {
+                        MotionEvent.ACTION_DOWN ->
+                        {
                             clicked.invoke()
                             selected.value = true
                         }
 
-                        MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP   ->
+                        {
                             selected.value = false
                         }
-                    };true
+                    }; true
                 },
             shape = CircleShape,
             contentColor = colorResource(id = R.color.white),
@@ -87,28 +99,32 @@ private fun ButtonBackView(clicked: () -> Unit = {}) {
 }
 
 @Composable
-private fun ButtonSkipView(clicked: () -> Unit = {}) {
+private fun ButtonSkipView(text: String, clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.9f else 1f)
     Box(
         modifier = Modifier
-            .scale(scale.value)
+            .scale(scale = scale.value)
             .wrapContentSize()
             .pointerInteropFilter { event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
+                when (event.action)
+                {
+                    MotionEvent.ACTION_DOWN ->
+                    {
                         clicked.invoke()
                         selected.value = true
                     }
 
-                    MotionEvent.ACTION_UP -> {
+                    MotionEvent.ACTION_UP   ->
+                    {
                         selected.value = false
                     }
                 }; true
             }
     ) {
         Text(
-            text = stringResource(id = R.string.skip),
+            text = text,
             fontSize = 13.sp,
             color = colorResource(id = R.color.black),
             fontWeight = FontWeight.Normal

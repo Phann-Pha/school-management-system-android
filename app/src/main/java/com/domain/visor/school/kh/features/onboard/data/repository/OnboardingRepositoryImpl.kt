@@ -5,19 +5,21 @@ import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingMo
 import com.domain.visor.school.kh.features.onboard.domain.repository.OnboardingRepository
 import javax.inject.Inject
 
-class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository {
-    override fun onAsyncOnboardingInfo(): List<DataOnboardingModel> {
+class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository
+{
+    override fun onAsyncOnboardingInfo(): List<DataOnboardingModel>
+    {
         return listOf(
             DataOnboardingModel(
-                thumbnail = R.drawable.onboard_1,
+                thumbnail = R.raw.analyze_animation,
                 description = R.string.description_onboard_1
             ),
             DataOnboardingModel(
-                thumbnail = R.drawable.onboard_2,
+                thumbnail = R.raw.scanning_anim,
                 description = R.string.description_onboard_2
             ),
             DataOnboardingModel(
-                thumbnail = R.drawable.onboard_3,
+                thumbnail = R.raw.listing_animation,
                 description = R.string.description_onboard_3
             )
         )

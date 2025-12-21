@@ -25,7 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun BoundIconButtonAnimation(clicked: () -> Unit = {}) {
+fun BoundIconButtonAnimation(clicked: () -> Unit = {})
+{
     val selected = remember { mutableStateOf(value = false) }
     val scale = animateFloatAsState(targetValue = if (selected.value) 0.85f else 1f)
     Box(
@@ -40,13 +41,16 @@ fun BoundIconButtonAnimation(clicked: () -> Unit = {}) {
                 .size(size = 56.dp)
                 .scale(scale.value)
                 .pointerInteropFilter {
-                    when (it.action) {
-                        MotionEvent.ACTION_DOWN -> {
+                    when (it.action)
+                    {
+                        MotionEvent.ACTION_DOWN ->
+                        {
                             clicked.invoke()
                             selected.value = true
                         }
 
-                        MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP   ->
+                        {
                             selected.value = false
                         }
                     }; true

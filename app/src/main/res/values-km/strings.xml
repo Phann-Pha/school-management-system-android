@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Texh-Visor</string>
+    <string name="app_name">VISOR</string>
+    <string name="app_version">១.០.០</string>
 
     <!--onboarding string-->
     <string name="description_onboard_1">តាមដានការចូលរួមភ្លាមៗជាមួយនឹងកំណត់ត្រាទាន់សម័យ គ្រប់ពេលវេលា គ្រប់ទីកន្លែង។</string>
@@ -12,8 +13,13 @@
     <string name="get_started">ចាប់ផ្តើម</string>
 
     <!--    selecting languages-->
-    <string name="texh_visor">Texh-Visor</string>
+    <string name="texh_visor">VISOR</string>
     <string name="please_selecting_your_language">សូមជ្រើសរើសភាសារបស់អ្នក</string>
     <string name="khmer">ភាសាខ្មែរ</string>
-    <string name="english">ភាសាអង់គ្លេស</string>
+    <string name="english">English</string>
+
+    <string name="user_name">ឈ្មោះអ្នកប្រើប្រាស់</string>
+    <string name="password">លេខសម្ងាត់</string>
+    <string name="login">យល់ព្រម</string>
+    <string name="forget_password">ភ្លេចលេខសម្ងាត់</string>
 </resources>
