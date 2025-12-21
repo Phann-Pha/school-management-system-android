@@ -42,9 +42,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // retrofit 2
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.okhttp)
+    api(libs.retrofit)
+    api(libs.converter.gson)
+    api(libs.okhttp)
 
     // rxJava
     implementation(libs.rxjava)
