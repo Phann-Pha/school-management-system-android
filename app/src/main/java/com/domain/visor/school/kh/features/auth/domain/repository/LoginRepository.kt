@@ -1,7 +1,8 @@
 package com.domain.visor.school.kh.features.auth.domain.repository
 
-import com.domain.visor.school.kh.features.onboard.domain.model.DataOnboardingModel
+import com.domain.visor.school.core_executor.helper.Resource
+import com.domain.visor.school.kh.features.auth.data.model.DataLoginDto
 
 interface LoginRepository {
-    fun onUserLogin(): List<DataOnboardingModel>
+    fun onUserLogin(): Response<DataLoginDto>
 }

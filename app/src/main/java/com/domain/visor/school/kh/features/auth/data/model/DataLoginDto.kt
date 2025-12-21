@@ -1,12 +1,12 @@
 package com.domain.visor.school.kh.features.auth.data.model
 
 import androidx.annotation.Keep
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 
 @Keep
 data class DataLoginDto(
-    @SerializedName("status") val status: String?,
-    @SerializedName("code") val code: String?,
-    @SerializedName("msg") val msg: String?,
-    @SerializedName("tokenID") val tokenID: String?
+    @SerialName("status") val status: String?,
+    @SerialName("code") val code: String?,
+    @SerialName("msg") val msg: String?,
+    @SerialName("tokenID") val tokenID: String?
 )

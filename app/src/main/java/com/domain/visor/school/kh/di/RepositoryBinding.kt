@@ -1,5 +1,6 @@
 package com.domain.visor.school.kh.di
 
+import com.domain.visor.school.kh.features.auth.domain.repository.LoginRepository
 import com.domain.visor.school.kh.features.onboard.data.repository.OnboardingRepositoryImpl
 import com.domain.visor.school.kh.features.onboard.domain.repository.OnboardingRepository
 import dagger.Binds
@@ -13,4 +14,7 @@ interface RepositoryBinding
 {
     @Binds
     fun onBindOnboardingRepository(impl: OnboardingRepositoryImpl): OnboardingRepository
+
+    @Binds
+    fun onBindLoginRepository(impl: LoginRepositoryI): OnboardingRepository
 }
