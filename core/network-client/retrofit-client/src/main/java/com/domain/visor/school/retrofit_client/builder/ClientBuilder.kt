@@ -31,6 +31,6 @@ class ClientBuilder @Inject constructor()
         .build()
 
     @Provides
-    @Named(value = "api")
+    @Named(value = "API")
     fun onRetrofit(@Named(value = "RetrofitBuilder") retrofit: Retrofit): APIInterface = retrofit.create(APIInterface::class.java)
 }
