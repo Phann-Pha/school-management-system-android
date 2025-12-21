@@ -24,7 +24,7 @@ import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.features.language.presentation.components.button.SelectingLanguageButton
 
 @Composable
-fun FooterSelectingLanguageScreen(bottom: Dp, language: MutableState<String>, clicked: (String) -> Unit = {})
+fun FooterLanguageScreen(bottom: Dp, language: MutableState<String>, clicked: (String) -> Unit = {})
 {
     Box(
         modifier = Modifier

@@ -49,13 +49,13 @@ class OnboardingScreenActivity : BaseComponentActivity()
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                body(padding = padding)
+                MainContent(padding = padding)
             }
         }
     }
 
     @Composable
-    private fun body(padding: PaddingValues)
+    private fun MainContent(padding: PaddingValues)
     {
         var count = 0
         val items = viewmodel.uiState.collectAsState(context = Dispatchers.Default).value

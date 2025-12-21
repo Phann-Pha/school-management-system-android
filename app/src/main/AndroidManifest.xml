@@ -31,7 +31,7 @@
                 android:exported="false"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".features.language.presentation.view.SelectingLanguageScreenActivity"
+                android:name=".features.language.presentation.view.LanguageScreenActivity"
                 android:exported="true"
                 android:configChanges="locale|layoutDirection"
                 android:screenOrientation="portrait"/>

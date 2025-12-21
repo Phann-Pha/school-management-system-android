@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun HeaderSelectingLanguageScreen(top: Dp, backed: () -> Unit)
+fun HeaderLanguageScreen(top: Dp, backed: () -> Unit)
 {
     Column(
         modifier = Modifier

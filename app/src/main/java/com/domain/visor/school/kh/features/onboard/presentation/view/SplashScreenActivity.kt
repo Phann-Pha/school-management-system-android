@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.common.AppLoadingAnimation
-import com.domain.visor.school.kh.features.language.presentation.view.SelectingLanguageScreenActivity
+import com.domain.visor.school.kh.features.language.presentation.view.LanguageScreenActivity
 import com.domain.visor.school.kh.features.onboard.presentation.viewmodel.SplashScreenViewModel
 
 @SuppressLint("CustomSplashScreen")
@@ -42,7 +42,7 @@ class SplashScreenActivity : BaseComponentActivity()
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
                 val loading = viewmodel.loadingState.observeAsState(false).value
                 AppLoadingAnimation(state = loading)
-                body(padding = padding)
+                MainContent(padding = padding)
             }
         }
 
@@ -51,7 +51,7 @@ class SplashScreenActivity : BaseComponentActivity()
     }
 
     @Composable
-    private fun body(padding: PaddingValues)
+    private fun MainContent(padding: PaddingValues)
     {
         Box(
             modifier = Modifier
@@ -87,7 +87,7 @@ class SplashScreenActivity : BaseComponentActivity()
     private fun onObservableViewModel()
     {
         viewmodel.onAsyncDataInfoState.observe(this) {
-            startActivity(SelectingLanguageScreenActivity.onNewInstance(activity = activity))
+            startActivity(LanguageScreenActivity.onNewInstance(activity = activity))
             activity.finish()
         }
     }

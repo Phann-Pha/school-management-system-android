@@ -10,7 +10,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SelectingLanguageScreenViewModel : ViewModel()
+class LanguageScreenViewModel : ViewModel()
 {
     private val languageHelper by lazy { LanguageHelper() }
 

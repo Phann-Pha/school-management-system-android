@@ -21,29 +21,29 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.domain.visor.school.kh.R
 import com.domain.visor.school.kh.base.BaseComponentActivity
 import com.domain.visor.school.kh.common.AppLoadingAnimation
-import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterSelectingLanguageScreen
-import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderSelectingLanguageScreen
-import com.domain.visor.school.kh.features.language.presentation.viewmodel.SelectingLanguageScreenViewModel
+import com.domain.visor.school.kh.features.language.presentation.components.footer.FooterLanguageScreen
+import com.domain.visor.school.kh.features.language.presentation.components.header.HeaderLanguageScreen
+import com.domain.visor.school.kh.features.language.presentation.viewmodel.LanguageScreenViewModel
 import com.domain.visor.school.kh.features.onboard.presentation.view.GetStartingScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SelectingLanguageScreenActivity : BaseComponentActivity()
+class LanguageScreenActivity : BaseComponentActivity()
 {
     companion object
     {
         fun onNewInstance(activity: Activity): Intent
         {
-            return Intent(activity, SelectingLanguageScreenActivity::class.java)
+            return Intent(activity, LanguageScreenActivity::class.java)
         }
     }
 
     private lateinit var activity: Activity
-    private val viewmodel: SelectingLanguageScreenViewModel by viewModels()
+    private val viewmodel: LanguageScreenViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        activity = this@SelectingLanguageScreenActivity
+        activity = this@LanguageScreenActivity
         super.onCreate(savedInstanceState)
         onChangeIconStatusBarColor(light = true)
         setContent {
@@ -51,7 +51,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
 
                 val loading = viewmodel.loadingState.observeAsState().value ?: false
                 AppLoadingAnimation(state = loading)
-                body(padding = padding)
+                MainContent(padding = padding)
             }
         }
 
@@ -59,7 +59,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
     }
 
     @Composable
-    private fun body(padding: PaddingValues)
+    private fun MainContent(padding: PaddingValues)
     {
         val code: String = viewmodel.onGetLanguageCode(context = activity)
         var current: String by remember { mutableStateOf(value = code) }
@@ -78,7 +78,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                HeaderSelectingLanguageScreen(
+                HeaderLanguageScreen(
                     top = padding.calculateTopPadding(),
                     backed = { finish() }
                 )
@@ -89,7 +89,7 @@ class SelectingLanguageScreenActivity : BaseComponentActivity()
                     composition = animation,
                     iterations = LottieConstants.IterateForever
                 )
-                FooterSelectingLanguageScreen(
+                FooterLanguageScreen(
                     bottom = padding.calculateBottomPadding(),
                     language = language,
                     clicked = { code ->

@@ -47,13 +47,13 @@ class GetStartingScreenActivity : BaseComponentActivity()
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-                body(padding = padding)
+                MainContent(padding = padding)
             }
         }
     }
 
     @Composable
-    private fun body(padding: PaddingValues)
+    private fun MainContent(padding: PaddingValues)
     {
         val spec = LottieCompositionSpec.RawRes(resId = R.raw.exam_anim)
         val animation by rememberLottieComposition(spec = spec)
