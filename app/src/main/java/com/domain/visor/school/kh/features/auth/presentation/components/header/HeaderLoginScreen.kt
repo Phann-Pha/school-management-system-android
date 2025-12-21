@@ -3,7 +3,6 @@ package com.domain.visor.school.kh.features.auth.presentation.components.header
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FloatingActionButton
@@ -35,9 +34,7 @@ fun HeaderLoginScreen(top: Dp, backed: () -> Unit)
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .background(color = colorResource(id = R.color.white))
-                .padding(start = 12.dp, end = 24.dp, top = top)
-                .padding(top = 4.dp),
+                .padding(start = 12.dp, end = 24.dp, top = top + 4.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {

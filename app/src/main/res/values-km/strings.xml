@@ -18,6 +18,8 @@
     <string name="khmer">ភាសាខ្មែរ</string>
     <string name="english">English</string>
 
+    <string name="user_name">ឈ្មោះអ្នកប្រើប្រាស់</string>
+    <string name="password">លេខសម្ងាត់</string>
     <string name="login">យល់ព្រម</string>
     <string name="forget_password">ភ្លេចលេខសម្ងាត់</string>
 </resources>

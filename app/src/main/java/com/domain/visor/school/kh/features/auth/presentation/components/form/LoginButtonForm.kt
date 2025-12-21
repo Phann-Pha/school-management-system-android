@@ -1,15 +1,8 @@
-package com.domain.visor.school.kh.features.auth.presentation.components.footer
+package com.domain.visor.school.kh.features.auth.presentation.components.form
 
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -24,41 +17,28 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.domain.visor.school.kh.R
 
 @Composable
-fun FooterLoginScreen(
-    bottom: Dp,
-    clickLogin: () -> Unit = {},
-    forgetPassClick: () -> Unit = {}
-)
+fun LoginButtonForm(login: () -> Unit = {}, forget: () -> Unit = {})
 {
-    Box(
+    Column(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(fraction = 0.75f)
             .wrapContentHeight(),
-        contentAlignment = Alignment.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(fraction = 0.65f)
-                .wrapContentHeight()
-                .padding(bottom = bottom),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            ButtonLogin(
-                text = stringResource(id = R.string.login),
-                clicked = clickLogin
-            )
-            Spacer(modifier = Modifier.height(height = 12.dp))
-            ButtonForgetPassword(
-                text = stringResource(id = R.string.forget_password),
-                clicked = forgetPassClick
-            )
-        }
+        ButtonLogin(
+            text = stringResource(id = R.string.login),
+            clicked = login
+        )
+        Spacer(modifier = Modifier.height(height = 12.dp))
+        ButtonForgetPassword(
+            text = stringResource(id = R.string.forget_password),
+            clicked = forget
+        )
     }
 }
 
