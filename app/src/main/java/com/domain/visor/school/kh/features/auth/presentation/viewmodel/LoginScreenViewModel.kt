@@ -18,8 +18,8 @@ class LoginScreenViewModel @Inject constructor(private val userLoginUseCase: Use
     private val _loadingState: MutableLiveData<Boolean> = MutableLiveData()
     val loadingState: LiveData<Boolean> = _loadingState
 
-    private val _userDataLoginState: MutableLiveData<DataUserLoginModel> = MutableLiveData()
-    val userDataLoginState: LiveData<DataUserLoginModel> = _userDataLoginState
+    private val _userDataLoginState: MutableLiveData<DataUserLoginModel?> = MutableLiveData()
+    val userDataLoginState: LiveData<DataUserLoginModel?> = _userDataLoginState
 
     private val _errorMessageState: MutableLiveData<String> = MutableLiveData()
     val errorMessageState: LiveData<String> = _errorMessageState

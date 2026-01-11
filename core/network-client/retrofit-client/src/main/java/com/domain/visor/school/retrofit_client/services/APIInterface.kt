@@ -11,9 +11,7 @@ interface APIInterface
     @POST("auth/login")
     @Headers("Content-Type: application/json")
     suspend fun onLoginUserAccount(@Body user: User): Response<ResponseBody>
-
 }
-
 
 data class User(
     val email: String,
