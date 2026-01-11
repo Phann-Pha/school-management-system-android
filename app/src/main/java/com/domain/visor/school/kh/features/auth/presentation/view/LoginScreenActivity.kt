@@ -43,12 +43,12 @@ class LoginScreenActivity : ComponentActivity()
         }
     }
 
-    private lateinit var activity: Activity
+    /*private lateinit var activity: Activity*/
     private val viewmodel: LoginScreenViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        activity = this@LoginScreenActivity
+        /*activity = this@LoginScreenActivity*/
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -58,6 +58,11 @@ class LoginScreenActivity : ComponentActivity()
                 MainContent(padding = padding)
             }
         }
+        observerViewModel()
+    }
+
+    private fun observerViewModel() {
+
     }
 
     @Composable
@@ -106,7 +111,12 @@ class LoginScreenActivity : ComponentActivity()
                     onValueChange = { password.value = it }
                 )
                 Spacer(modifier = Modifier.height(height = 42.dp))
-                LoginButtonForm()
+                LoginButtonForm(login = {
+                    viewmodel.onVerifyLoginInfo(
+                        email = "admin@school.com",
+                        password = "Admin@123456"
+                    )
+                })
             }
 
             // Header

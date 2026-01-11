@@ -24,13 +24,13 @@ class LoginScreenViewModel @Inject constructor(private val userLoginUseCase: Use
     private val _errorMessageState: MutableLiveData<String> = MutableLiveData()
     val errorMessageState: LiveData<String> = _errorMessageState
 
-    init
+    /*init
     {
         onVerifyLoginInfo(
             email = "admin@school.com",
             password = "Admin@123456"
         )
-    }
+    }*/
 
     fun onVerifyLoginInfo(email: String, password: String)
     {
